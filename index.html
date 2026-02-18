@@ -1,0 +1,2144 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Зигма Арт — Маркетинговое исследование</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=IBM+Plex+Sans:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0a0a0f;
+    --surface: #12121a;
+    --surface2: #1a1a26;
+    --border: #2a2a40;
+    --accent: #e8c97e;
+    --accent2: #7e9ee8;
+    --accent3: #e87e9e;
+    --accent4: #7ee8b8;
+    --text: #e8e8f0;
+    --muted: #8888aa;
+    --red: #e87e7e;
+    --green: #7ee8a0;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 14px;
+    line-height: 1.6;
+    min-height: 100vh;
+  }
+
+  /* HEADER */
+  .header {
+    background: linear-gradient(135deg, #0a0a0f 0%, #1a1228 50%, #0a0a0f 100%);
+    border-bottom: 1px solid var(--border);
+    padding: 48px 40px 40px;
+    position: relative;
+    overflow: hidden;
+  }
+  .header::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -10%;
+    width: 40%;
+    height: 200%;
+    background: radial-gradient(ellipse, rgba(232,201,126,0.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .header::after {
+    content: '';
+    position: absolute;
+    top: -30%;
+    right: 5%;
+    width: 30%;
+    height: 150%;
+    background: radial-gradient(ellipse, rgba(126,158,232,0.06) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .header-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 12px;
+  }
+  .header h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 52px;
+    font-weight: 900;
+    line-height: 1.1;
+    color: var(--text);
+    margin-bottom: 8px;
+  }
+  .header h1 span { color: var(--accent); }
+  .header-sub {
+    font-size: 16px;
+    color: var(--muted);
+    font-weight: 300;
+    margin-bottom: 32px;
+  }
+  .header-stats {
+    display: flex;
+    gap: 40px;
+    flex-wrap: wrap;
+  }
+  .hstat {
+    border-left: 2px solid var(--accent);
+    padding-left: 16px;
+  }
+  .hstat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--accent);
+  }
+  .hstat-label {
+    font-size: 12px;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  /* TABS */
+  .tabs-container {
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    padding: 0 40px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  .tabs {
+    display: flex;
+    gap: 0;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .tabs::-webkit-scrollbar { display: none; }
+  .tab {
+    padding: 16px 22px;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--muted);
+    border-bottom: 2px solid transparent;
+    transition: all 0.2s;
+    white-space: nowrap;
+    user-select: none;
+    letter-spacing: 0.3px;
+  }
+  .tab:hover { color: var(--text); }
+  .tab.active {
+    color: var(--accent);
+    border-bottom-color: var(--accent);
+  }
+
+  /* CONTENT */
+  .content {
+    padding: 40px;
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+  .tab-panel { display: none; }
+  .tab-panel.active { display: block; }
+
+  /* SECTION TITLE */
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 8px;
+    color: var(--text);
+  }
+  .section-desc {
+    color: var(--muted);
+    margin-bottom: 36px;
+    font-size: 15px;
+    max-width: 700px;
+  }
+
+  /* EXECUTIVE SUMMARY */
+  .exec-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-bottom: 32px;
+  }
+  .exec-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 28px;
+    position: relative;
+    overflow: hidden;
+  }
+  .exec-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+  }
+  .exec-card.gold::before { background: var(--accent); }
+  .exec-card.blue::before { background: var(--accent2); }
+  .exec-card.pink::before { background: var(--accent3); }
+  .exec-card.green::before { background: var(--accent4); }
+  .exec-card-title {
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 12px;
+  }
+  .exec-card p {
+    font-size: 14px;
+    color: var(--text);
+    line-height: 1.7;
+  }
+  .highlight-box {
+    background: linear-gradient(135deg, rgba(232,201,126,0.08), rgba(232,201,126,0.03));
+    border: 1px solid rgba(232,201,126,0.3);
+    border-radius: 12px;
+    padding: 28px;
+    margin-bottom: 24px;
+  }
+  .highlight-box p {
+    font-size: 15px;
+    line-height: 1.8;
+    color: var(--text);
+  }
+
+  /* SEGMENTS */
+  .segments-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-bottom: 32px;
+  }
+  .segment-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 24px;
+    transition: border-color 0.2s;
+    cursor: pointer;
+  }
+  .segment-card:hover { border-color: var(--accent); }
+  .segment-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-bottom: 16px;
+    gap: 12px;
+  }
+  .segment-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 1.3;
+  }
+  .segment-pct {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 22px;
+    font-weight: 500;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+  .segment-bar-wrap {
+    background: var(--bg);
+    border-radius: 4px;
+    height: 6px;
+    margin-bottom: 16px;
+    overflow: hidden;
+  }
+  .segment-bar {
+    height: 100%;
+    border-radius: 4px;
+    transition: width 1s ease;
+  }
+  .segment-info { font-size: 13px; color: var(--muted); line-height: 1.6; }
+  .segment-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 12px;
+  }
+  .tag {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 3px 10px;
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: 0.3px;
+  }
+
+  /* CHART CONTAINERS */
+  .chart-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-bottom: 24px;
+  }
+  .chart-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 28px;
+  }
+  .chart-title {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 6px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  .chart-subtitle {
+    font-size: 12px;
+    color: var(--muted);
+    margin-bottom: 24px;
+  }
+
+  /* PIE CHART */
+  .pie-container {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+  }
+  .pie-svg { flex-shrink: 0; }
+  .pie-legend { flex: 1; }
+  .pie-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+    cursor: pointer;
+  }
+  .pie-dot {
+    width: 10px; height: 10px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+  .pie-label { font-size: 12px; color: var(--muted); flex: 1; }
+  .pie-val {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 13px;
+    font-weight: 500;
+  }
+
+  /* BAR CHART */
+  .bar-chart { display: flex; flex-direction: column; gap: 12px; }
+  .bar-row { display: flex; align-items: center; gap: 12px; }
+  .bar-label { font-size: 12px; color: var(--muted); width: 160px; flex-shrink: 0; text-align: right; }
+  .bar-track {
+    flex: 1;
+    background: var(--bg);
+    border-radius: 4px;
+    height: 28px;
+    overflow: hidden;
+    position: relative;
+  }
+  .bar-fill {
+    height: 100%;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    padding-right: 10px;
+    justify-content: flex-end;
+    transition: width 1.2s ease;
+  }
+  .bar-num {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--bg);
+  }
+
+  /* COMPETITORS TABLE */
+  .table-wrap {
+    overflow-x: auto;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    margin-bottom: 24px;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 800px;
+  }
+  thead th {
+    background: var(--surface2);
+    padding: 14px 16px;
+    text-align: left;
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--muted);
+    border-bottom: 1px solid var(--border);
+    white-space: nowrap;
+  }
+  tbody td {
+    padding: 14px 16px;
+    border-bottom: 1px solid var(--border);
+    font-size: 13px;
+    vertical-align: top;
+    line-height: 1.5;
+  }
+  tbody tr:last-child td { border-bottom: none; }
+  tbody tr:hover { background: var(--surface2); }
+  tbody tr.zigma-row { background: rgba(232,201,126,0.05); }
+  tbody tr.zigma-row td { color: var(--accent); }
+
+  /* RATING CELLS */
+  .rating {
+    display: flex;
+    gap: 3px;
+  }
+  .dot-r {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: var(--border);
+  }
+  .dot-r.filled { background: var(--accent4); }
+  .dot-r.filled-red { background: var(--red); }
+
+  /* PROS/CONS */
+  .pro { color: var(--green); }
+  .con { color: var(--red); }
+
+  /* POSITIONING MAP */
+  .pos-map {
+    position: relative;
+    width: 100%;
+    height: 400px;
+    background: var(--bg);
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    overflow: hidden;
+  }
+  .axis-x {
+    position: absolute;
+    top: 50%;
+    left: 0; right: 0;
+    height: 1px;
+    background: var(--border);
+  }
+  .axis-y {
+    position: absolute;
+    top: 0; bottom: 0;
+    left: 50%;
+    width: 1px;
+    background: var(--border);
+  }
+  .axis-label {
+    position: absolute;
+    font-size: 11px;
+    color: var(--muted);
+    font-family: 'IBM Plex Mono', monospace;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+  .pos-brand {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    cursor: pointer;
+    z-index: 10;
+  }
+  .pos-dot {
+    width: 14px; height: 14px;
+    border-radius: 50%;
+    border: 2px solid;
+    transition: transform 0.2s;
+  }
+  .pos-brand:hover .pos-dot { transform: scale(1.4); }
+  .pos-name {
+    font-size: 10px;
+    font-weight: 600;
+    white-space: nowrap;
+    letter-spacing: 0.5px;
+  }
+
+  /* STRATEGIES */
+  .strategy-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+  .strategy-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 24px;
+  }
+  .strategy-num {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 36px;
+    font-weight: 500;
+    color: var(--border);
+    line-height: 1;
+    margin-bottom: 12px;
+  }
+  .strategy-title {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: var(--accent);
+  }
+  .strategy-body { font-size: 13px; color: var(--muted); line-height: 1.7; }
+
+  /* TIMELINE */
+  .timeline {
+    position: relative;
+    padding-left: 40px;
+    margin-bottom: 32px;
+  }
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 12px; top: 0; bottom: 0;
+    width: 1px;
+    background: var(--border);
+  }
+  .timeline-item {
+    position: relative;
+    margin-bottom: 32px;
+  }
+  .timeline-dot {
+    position: absolute;
+    left: -34px;
+    top: 4px;
+    width: 12px; height: 12px;
+    border-radius: 50%;
+    border: 2px solid var(--accent);
+    background: var(--bg);
+  }
+  .timeline-period {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    color: var(--accent);
+    letter-spacing: 1px;
+    margin-bottom: 6px;
+  }
+  .timeline-title {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 12px;
+  }
+  .timeline-items {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .timeline-task {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.5;
+  }
+  .timeline-task::before {
+    content: '→';
+    color: var(--accent4);
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  /* KPI */
+  .kpi-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+  .kpi-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 24px;
+    text-align: center;
+  }
+  .kpi-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 36px;
+    font-weight: 700;
+    margin-bottom: 4px;
+  }
+  .kpi-label {
+    font-size: 11px;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+  }
+  .kpi-target {
+    font-size: 12px;
+    color: var(--muted);
+    font-family: 'IBM Plex Mono', monospace;
+  }
+
+  /* SWOT */
+  .swot-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 32px;
+  }
+  .swot-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 24px;
+  }
+  .swot-title {
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 16px;
+  }
+  .swot-items { display: flex; flex-direction: column; gap: 10px; }
+  .swot-item {
+    display: flex;
+    gap: 10px;
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.5;
+  }
+  .swot-icon { flex-shrink: 0; font-size: 14px; margin-top: 1px; }
+
+  /* RADAR CHART SVG */
+  .radar-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+    padding: 16px;
+  }
+  .radar-legend { display: flex; flex-direction: column; gap: 14px; }
+  .radar-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 13px;
+  }
+  .radar-line {
+    width: 28px; height: 3px; border-radius: 2px;
+  }
+
+  /* AUDIENCE DETAIL */
+  .audience-detail {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-bottom: 24px;
+  }
+  .detail-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 24px;
+  }
+  .detail-title {
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--muted);
+    margin-bottom: 16px;
+  }
+  .emotion-flow {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 13px;
+  }
+  .emotion {
+    background: var(--surface2);
+    border-radius: 8px;
+    padding: 8px 14px;
+    color: var(--text);
+    flex: 1;
+    text-align: center;
+    line-height: 1.4;
+    font-size: 12px;
+  }
+  .emotion.before { border: 1px solid var(--red); color: var(--red); }
+  .emotion.after { border: 1px solid var(--green); color: var(--green); }
+  .arrow-emo { font-size: 18px; color: var(--muted); flex-shrink: 0; }
+
+  /* CHANNELS */
+  .channels-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+  .channel-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 20px;
+  }
+  .channel-icon { font-size: 24px; margin-bottom: 12px; }
+  .channel-name {
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 8px;
+  }
+  .channel-desc { font-size: 12px; color: var(--muted); line-height: 1.6; }
+
+  /* RISKS */
+  .risks-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+  .risk-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-left: 3px solid;
+    border-radius: 12px;
+    padding: 20px;
+  }
+  .risk-level {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 8px;
+    font-weight: 600;
+  }
+  .risk-title {
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 10px;
+  }
+  .risk-body { font-size: 12px; color: var(--muted); line-height: 1.6; margin-bottom: 10px; }
+  .risk-solution {
+    font-size: 12px;
+    color: var(--accent4);
+    padding-top: 10px;
+    border-top: 1px solid var(--border);
+    line-height: 1.5;
+  }
+
+  /* FULL WIDTH CARD */
+  .full-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 28px;
+    margin-bottom: 20px;
+  }
+  .full-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 16px;
+    color: var(--accent);
+  }
+
+  /* LIST */
+  .styled-list { display: flex; flex-direction: column; gap: 10px; }
+  .styled-item {
+    display: flex;
+    gap: 12px;
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.6;
+  }
+  .styled-bullet {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--accent);
+    flex-shrink: 0;
+    margin-top: 7px;
+  }
+
+  /* WHITE SPOTS */
+  .spots-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+  .spot-card {
+    background: linear-gradient(135deg, var(--surface), var(--surface2));
+    border: 1px dashed rgba(232,201,126,0.3);
+    border-radius: 12px;
+    padding: 22px;
+    position: relative;
+    overflow: hidden;
+  }
+  .spot-badge {
+    display: inline-block;
+    background: rgba(232,201,126,0.15);
+    color: var(--accent);
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border-radius: 20px;
+    margin-bottom: 12px;
+    border: 1px solid rgba(232,201,126,0.3);
+  }
+  .spot-title {
+    font-size: 15px;
+    font-weight: 600;
+    margin-bottom: 10px;
+  }
+  .spot-desc { font-size: 12px; color: var(--muted); line-height: 1.6; }
+
+  /* SCROLL ANIMATION */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .tab-panel.active > * {
+    animation: fadeUp 0.4s ease both;
+  }
+  .tab-panel.active > *:nth-child(2) { animation-delay: 0.05s; }
+  .tab-panel.active > *:nth-child(3) { animation-delay: 0.1s; }
+  .tab-panel.active > *:nth-child(4) { animation-delay: 0.15s; }
+
+  /* INLINE GRID HELPERS */
+  .inline-3col { display: grid; grid-template-columns: repeat(3, 1fr); }
+  .inline-4col { display: grid; grid-template-columns: repeat(4, 1fr); }
+
+  /* RESPONSIVE — tablet */
+  @media (max-width: 900px) {
+    .header h1 { font-size: 32px; }
+    .exec-grid, .strategy-grid, .swot-grid, .audience-detail { grid-template-columns: 1fr; }
+    .chart-row { grid-template-columns: 1fr; }
+    .segments-grid, .inline-3col { grid-template-columns: 1fr; }
+    .kpi-grid { grid-template-columns: repeat(2, 1fr); }
+    .inline-4col { grid-template-columns: repeat(2, 1fr); }
+    .channels-grid, .risks-grid, .spots-grid { grid-template-columns: 1fr; }
+    .content { padding: 20px; }
+    .tabs-container { padding: 0 20px; }
+    .header { padding: 28px 20px 24px; }
+  }
+
+  /* RESPONSIVE — mobile */
+  @media (max-width: 600px) {
+    /* Header */
+    .header { padding: 20px 16px 18px; }
+    .header h1 { font-size: 24px; }
+    .header-sub { font-size: 13px; margin-bottom: 16px; }
+    .header-stats { gap: 16px; flex-wrap: wrap; }
+    .hstat-num { font-size: 20px; }
+    .hstat-label { font-size: 11px; }
+
+    /* Tabs — перенос в 2 строки на мобилке */
+    .tabs-container {
+      padding: 0;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+    .tabs {
+      flex-wrap: wrap;
+      overflow-x: visible;
+      padding: 4px 8px 0;
+    }
+    .tab {
+      padding: 10px 10px;
+      font-size: 11px;
+      white-space: nowrap;
+      min-height: 44px;
+      display: flex;
+      align-items: center;
+      -webkit-tap-highlight-color: rgba(232,201,126,0.2);
+      touch-action: manipulation;
+      cursor: pointer;
+      user-select: none;
+      border-bottom: 2px solid transparent;
+      flex-shrink: 0;
+    }
+    .tab.active {
+      color: var(--accent);
+      border-bottom-color: var(--accent);
+    }
+
+    /* Content */
+    .content { padding: 12px; }
+
+    /* All multi-col → 1 col */
+    .exec-grid, .strategy-grid, .swot-grid, .audience-detail,
+    .chart-row, .segments-grid, .inline-3col,
+    .channels-grid, .risks-grid, .spots-grid {
+      grid-template-columns: 1fr !important;
+    }
+
+    /* 4-col → 2-col */
+    .kpi-grid, .inline-4col {
+      grid-template-columns: repeat(2, 1fr) !important;
+    }
+
+    /* Section heading */
+    .section-title { font-size: 22px; }
+    .section-desc { font-size: 13px; margin-bottom: 20px; }
+
+    /* Cards */
+    .full-card { padding: 16px; }
+    .exec-card { padding: 18px; }
+    .chart-card { padding: 16px; }
+    .highlight-box { padding: 18px; }
+
+    /* Pie chart */
+    .pie-container { flex-direction: column; align-items: center; gap: 16px; }
+
+    /* Bar chart label */
+    .bar-label { width: 90px; font-size: 10px; }
+    .bar-num { font-size: 10px; }
+
+    /* Radar */
+    .radar-wrap { flex-direction: column; gap: 16px; }
+
+    /* Emotion flow */
+    .emotion-flow { flex-direction: column; gap: 8px; }
+    .arrow-emo { transform: rotate(90deg); }
+
+    /* Positioning map */
+    .pos-map { height: 260px; }
+    .pos-name { font-size: 9px; }
+
+    /* Timeline */
+    .timeline { padding-left: 24px; }
+    .timeline-dot { left: -28px; }
+
+    /* KPI */
+    .kpi-num { font-size: 28px; }
+
+    /* Table horizontal scroll */
+    .table-wrap {
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    /* Funnel items word-break */
+    .full-card [style*="justify-content:space-between"] {
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-label">Стратегический отчёт · Маркетинговое исследование 2025</div>
+  <h1>Зигма <span>Арт</span></h1>
+  <div class="header-sub">Театральная студия — Москва · Анализ целевой аудитории, конкурентов и стратегия роста</div>
+  <div class="header-stats">
+    <div class="hstat"><div class="hstat-num">260K</div><div class="hstat-label">семей — рынок</div></div>
+    <div class="hstat"><div class="hstat-num">50+</div><div class="hstat-label">конкурентов</div></div>
+    <div class="hstat"><div class="hstat-num">7</div><div class="hstat-label">сегментов ЦА</div></div>
+    <div class="hstat"><div class="hstat-num">85K₽</div><div class="hstat-label">LTV ученика</div></div>
+  </div>
+</div>
+
+<div class="tabs-container">
+  <div class="tabs">
+    <div class="tab active" onclick="switchTab(0)">Executive Summary</div>
+    <div class="tab" onclick="switchTab(1)">Целевая аудитория</div>
+    <div class="tab" onclick="switchTab(2)">Сегменты ЦА</div>
+    <div class="tab" onclick="switchTab(3)">Конкуренты</div>
+    <div class="tab" onclick="switchTab(4)">Позиционирование</div>
+    <div class="tab" onclick="switchTab(5)">Стратегия</div>
+    <div class="tab" onclick="switchTab(6)">KPI и Метрики</div>
+    <div class="tab" onclick="switchTab(7)">Риски</div>
+  </div>
+</div>
+
+<div class="content">
+
+<!-- ===== TAB 0: EXECUTIVE SUMMARY ===== -->
+<div class="tab-panel active" id="panel-0">
+  <div class="section-title">Executive Summary</div>
+  <div class="section-desc">Ключевые выводы и стратегический контекст исследования театральной студии «Зигма Арт»</div>
+
+  <div class="highlight-box">
+    <p>Театральная студия «Зигма Арт» имеет уникальную возможность занять позицию <strong style="color:var(--accent)">"системного трансформатора личности"</strong> на высокофрагментированном рынке театральных студий Москвы. Ни один из 50+ конкурентов не комбинирует доказанные результаты (95% поступаемость в вузы), психологическое сопровождение, локацию в центре и доступную цену в одной модели.</p>
+  </div>
+
+  <div class="exec-grid">
+    <div class="exec-card gold">
+      <div class="exec-card-title">🎯 Главная ЦА</div>
+      <p>Родители застенчивых детей 5–16 лет с доходом 120–150 тыс₽. Женщина 32–42 года, менеджер/специалист, готова ехать в центр ради качества. Доля: 22% от базы.</p>
+    </div>
+    <div class="exec-card blue">
+      <div class="exec-card-title">🏆 Уникальное преимущество</div>
+      <p>Методика Вахтанговской школы + педагог-психолог с 14-летним опытом. Малые группы до 15 человек. 3 дисциплины за 3 часа вместо 45 минут у конкурентов.</p>
+    </div>
+    <div class="exec-card pink">
+      <div class="exec-card-title">⚠️ Основные конкуренты</div>
+      <p>«Талантино» (премиум, звёзды), «Русская речь» (400 уч., лицензия), «Ирбис» (сеть, слабое качество), Gogol School (soft skills, центр). Никто не закрывает психолого-пед. подход.</p>
+    </div>
+    <div class="exec-card green">
+      <div class="exec-card-title">📈 Рекомендация №1</div>
+      <p>Позиционирование "от простого к сложному без давления" + белый пробел — комплексный психолого-педагогический подход. Цель: 150 учеников, 15 заявок в неделю.</p>
+    </div>
+  </div>
+
+  <div class="chart-row">
+    <div class="chart-card">
+      <div class="chart-title">Распределение сегментов ЦА</div>
+      <div class="chart-subtitle">Доля от базы клиентов по ключевым сегментам</div>
+      <div class="pie-container">
+        <svg class="pie-svg" width="160" height="160" viewBox="0 0 160 160">
+          <circle cx="80" cy="80" r="60" fill="none" stroke="#2a2a40" stroke-width="24"/>
+          <!-- Segments drawn as stroke-dasharray on circle -->
+          <!-- C = 2*pi*60 ≈ 376.99 -->
+          <!-- застенчивый 22% = 82.9, start 0 -->
+          <circle cx="80" cy="80" r="60" fill="none" stroke="#e8c97e" stroke-width="24"
+            stroke-dasharray="83 294" stroke-dashoffset="0" transform="rotate(-90 80 80)"/>
+          <!-- речевой 18% = 67.9, start 83 -->
+          <circle cx="80" cy="80" r="60" fill="none" stroke="#7e9ee8" stroke-width="24"
+            stroke-dasharray="68 309" stroke-dashoffset="-83" transform="rotate(-90 80 80)"/>
+          <!-- гиперактивный 15% = 56.5, start 151 -->
+          <circle cx="80" cy="80" r="60" fill="none" stroke="#e87e9e" stroke-width="24"
+            stroke-dasharray="57 320" stroke-dashoffset="-151" transform="rotate(-90 80 80)"/>
+          <!-- перфекционист 10% = 37.7, start 208 -->
+          <circle cx="80" cy="80" r="60" fill="none" stroke="#7ee8b8" stroke-width="24"
+            stroke-dasharray="38 339" stroke-dashoffset="-208" transform="rotate(-90 80 80)"/>
+          <!-- IT 9% = 33.9, start 246 -->
+          <circle cx="80" cy="80" r="60" fill="none" stroke="#f0a060" stroke-width="24"
+            stroke-dasharray="34 343" stroke-dashoffset="-246" transform="rotate(-90 80 80)"/>
+          <!-- амбиц. родитель 7% = 26.4, start 280 -->
+          <circle cx="80" cy="80" r="60" fill="none" stroke="#a07ee8" stroke-width="24"
+            stroke-dasharray="26 351" stroke-dashoffset="-280" transform="rotate(-90 80 80)"/>
+          <!-- травма 6% = 22.6, start 306 -->
+          <circle cx="80" cy="80" r="60" fill="none" stroke="#e8e87e" stroke-width="24"
+            stroke-dasharray="21 356" stroke-dashoffset="-306" transform="rotate(-90 80 80)"/>
+          <text x="80" y="76" text-anchor="middle" fill="#e8e8f0" font-size="14" font-family="Playfair Display" font-weight="700">7</text>
+          <text x="80" y="93" text-anchor="middle" fill="#8888aa" font-size="10" font-family="IBM Plex Sans">сегментов</text>
+        </svg>
+        <div class="pie-legend">
+          <div class="pie-item"><div class="pie-dot" style="background:#e8c97e"></div><div class="pie-label">Застенчивый ребёнок</div><div class="pie-val" style="color:#e8c97e">22%</div></div>
+          <div class="pie-item"><div class="pie-dot" style="background:#7e9ee8"></div><div class="pie-label">Речевые проблемы</div><div class="pie-val" style="color:#7e9ee8">18%</div></div>
+          <div class="pie-item"><div class="pie-dot" style="background:#e87e9e"></div><div class="pie-label">Гиперактивный</div><div class="pie-val" style="color:#e87e9e">15%</div></div>
+          <div class="pie-item"><div class="pie-dot" style="background:#7ee8b8"></div><div class="pie-label">Перфекционист</div><div class="pie-val" style="color:#7ee8b8">11%</div></div>
+          <div class="pie-item"><div class="pie-dot" style="background:#f0a060"></div><div class="pie-label">IT-специалист</div><div class="pie-val" style="color:#f0a060">9%</div></div>
+          <div class="pie-item"><div class="pie-dot" style="background:#a07ee8"></div><div class="pie-label">Амбиц. родитель</div><div class="pie-val" style="color:#a07ee8">7%</div></div>
+          <div class="pie-item"><div class="pie-dot" style="background:#e8e87e"></div><div class="pie-label">Ребёнок с травмой</div><div class="pie-val" style="color:#e8e87e">6%</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="chart-card">
+      <div class="chart-title">Привлекательность сегментов</div>
+      <div class="chart-subtitle">Оценка по LTV, мотивации и реферальному потенциалу</div>
+      <div class="bar-chart">
+        <div class="bar-row">
+          <div class="bar-label">Застенчивый</div>
+          <div class="bar-track"><div class="bar-fill" style="width:92%;background:var(--accent)"><span class="bar-num">9.2</span></div></div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-label">Речевые проблемы</div>
+          <div class="bar-track"><div class="bar-fill" style="width:88%;background:var(--accent2)"><span class="bar-num">8.8</span></div></div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-label">IT-специалист</div>
+          <div class="bar-track"><div class="bar-fill" style="width:85%;background:var(--accent3)"><span class="bar-num">8.5</span></div></div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-label">Гиперактивный</div>
+          <div class="bar-track"><div class="bar-fill" style="width:80%;background:var(--accent4)"><span class="bar-num">8.0</span></div></div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-label">Перфекционист</div>
+          <div class="bar-track"><div class="bar-fill" style="width:75%;background:#f0a060"><span class="bar-num">7.5</span></div></div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-label">Амбиц. родитель</div>
+          <div class="bar-track"><div class="bar-fill" style="width:70%;background:#a07ee8"><span class="bar-num">7.0</span></div></div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-label">Ребёнок с травмой</div>
+          <div class="bar-track"><div class="bar-fill" style="width:65%;background:#e8e87e"><span class="bar-num">6.5</span></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="full-card">
+    <h3>Ключевые белые пятна рынка — незакрытые потребности</h3>
+    <div class="segments-grid inline-3col" style="gap:12px;margin-bottom:0">
+      <div style="background:var(--bg);border-radius:8px;padding:16px;border:1px dashed rgba(232,201,126,0.3)">
+        <div style="color:var(--accent);font-size:11px;text-transform:uppercase;letter-spacing:2px;margin-bottom:8px">Белое пятно #1</div>
+        <div style="font-size:13px;color:var(--text);font-weight:600;margin-bottom:6px">Психолого-педагогический подход</div>
+        <div style="font-size:12px;color:var(--muted)">Ни один конкурент не комбинирует театральные методы с психологическим сопровождением</div>
+      </div>
+      <div style="background:var(--bg);border-radius:8px;padding:16px;border:1px dashed rgba(126,158,232,0.3)">
+        <div style="color:var(--accent2);font-size:11px;text-transform:uppercase;letter-spacing:2px;margin-bottom:8px">Белое пятно #2</div>
+        <div style="font-size:13px;color:var(--text);font-weight:600;margin-bottom:6px">Гиперактивные дети через театр</div>
+        <div style="font-size:12px;color:var(--muted)">Спорт сжигает энергию, но не развивает коммуникацию и эмпатию</div>
+      </div>
+      <div style="background:var(--bg);border-radius:8px;padding:16px;border:1px dashed rgba(232,126,158,0.3)">
+        <div style="color:var(--accent3);font-size:11px;text-transform:uppercase;letter-spacing:2px;margin-bottom:8px">Белое пятно #3</div>
+        <div style="font-size:13px;color:var(--text);font-weight:600;margin-bottom:6px">Буллинг — реабилитация</div>
+        <div style="font-size:12px;color:var(--muted)">Дети после травли ищут безопасное пространство — никто не позиционирует это</div>
+      </div>
+      <div style="background:var(--bg);border-radius:8px;padding:16px;border:1px dashed rgba(126,232,184,0.3)">
+        <div style="color:var(--accent4);font-size:11px;text-transform:uppercase;letter-spacing:2px;margin-bottom:8px">Белое пятно #4</div>
+        <div style="font-size:13px;color:var(--text);font-weight:600;margin-bottom:6px">Soft skills для взрослых B2B</div>
+        <div style="font-size:12px;color:var(--muted)">IT-специалисты + корпоративные программы для HR-отделов</div>
+      </div>
+      <div style="background:var(--bg);border-radius:8px;padding:16px;border:1px dashed rgba(240,160,96,0.3)">
+        <div style="color:#f0a060;font-size:11px;text-transform:uppercase;letter-spacing:2px;margin-bottom:8px">Белое пятно #5</div>
+        <div style="font-size:13px;color:var(--text);font-weight:600;margin-bottom:6px">Интроверт без "переделки"</div>
+        <div style="font-size:12px;color:var(--muted)">Родители боятся, что ребёнка "переделают". Безопасная среда для интровертов</div>
+      </div>
+      <div style="background:var(--bg);border-radius:8px;padding:16px;border:1px dashed rgba(160,126,232,0.3)">
+        <div style="color:#a07ee8;font-size:11px;text-transform:uppercase;letter-spacing:2px;margin-bottom:8px">Белое пятно #6</div>
+        <div style="font-size:13px;color:var(--text);font-weight:600;margin-bottom:6px">Долгосрочная трансформация</div>
+        <div style="font-size:12px;color:var(--muted)">Фокус на системных изменениях, а не быстрых победах и кастингах</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== TAB 1: ЦЕЛЕВАЯ АУДИТОРИЯ ===== -->
+<div class="tab-panel" id="panel-1">
+  <div class="section-title">Целевая аудитория</div>
+  <div class="section-desc">Детальный портрет приоритетных клиентских групп, контекст спроса и триггеры принятия решений</div>
+
+  <div class="audience-detail">
+    <div class="detail-card">
+      <div class="detail-title">👩 Портрет приоритетного клиента</div>
+      <div class="bar-chart" style="gap:8px">
+        <div style="display:flex;justify-content:space-between;font-size:13px;margin-bottom:4px">
+          <span style="color:var(--muted)">Пол</span><span style="color:var(--accent)">Женщина (80%+)</span>
+        </div>
+        <div style="display:flex;justify-content:space-between;font-size:13px;margin-bottom:4px">
+          <span style="color:var(--muted)">Возраст</span><span style="color:var(--text)">32–45 лет</span>
+        </div>
+        <div style="display:flex;justify-content:space-between;font-size:13px;margin-bottom:4px">
+          <span style="color:var(--muted)">Должность</span><span style="color:var(--text)">Менеджер / Специалист</span>
+        </div>
+        <div style="display:flex;justify-content:space-between;font-size:13px;margin-bottom:4px">
+          <span style="color:var(--muted)">Доход семьи</span><span style="color:var(--accent4)">120–150 тыс₽/мес</span>
+        </div>
+        <div style="display:flex;justify-content:space-between;font-size:13px;margin-bottom:4px">
+          <span style="color:var(--muted)">Локация</span><span style="color:var(--text)">Спальные районы Москвы</span>
+        </div>
+        <div style="display:flex;justify-content:space-between;font-size:13px;margin-bottom:4px">
+          <span style="color:var(--muted)">Возраст ребёнка</span><span style="color:var(--text)">5–16 лет</span>
+        </div>
+        <div style="display:flex;justify-content:space-between;font-size:13px;margin-bottom:4px">
+          <span style="color:var(--muted)">Готовность ехать</span><span style="color:var(--accent4)">В центр ради качества ✓</span>
+        </div>
+        <div style="display:flex;justify-content:space-between;font-size:13px">
+          <span style="color:var(--muted)">Чувств. к цене</span><span style="color:var(--text)">Средняя (11–12 тыс₽ ок)</span>
+        </div>
+      </div>
+    </div>
+    <div class="detail-card">
+      <div class="detail-title">🎯 Jobs To Be Done — Big Job</div>
+      <div style="font-size:14px;color:var(--text);line-height:1.8;font-style:italic;border-left:3px solid var(--accent);padding-left:16px;margin-bottom:16px">
+        "Я хочу, чтобы мой ребёнок был уверен в себе, имел друзей, не боялся публичных выступлений, красиво говорил — и всё это произошло через безопасный процесс, который не будет его ломать или перегружать"
+      </div>
+      <div style="font-size:12px;color:var(--muted)">
+        Родитель нанимает студию не ради актёрства, а ради <strong style="color:var(--accent)">комплексного развития личности</strong>: уверенность, социализация, речь, лидерство — всё вместе, без стресса.
+      </div>
+    </div>
+  </div>
+
+  <div class="chart-row">
+    <div class="chart-card">
+      <div class="chart-title">Триггеры обращения</div>
+      <div class="chart-subtitle">Что запускает поиск решения</div>
+      <div class="bar-chart">
+        <div class="bar-row">
+          <div class="bar-label">Боится выступать</div>
+          <div class="bar-track"><div class="bar-fill" style="width:90%;background:var(--accent)"><span class="bar-num">90%</span></div></div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-label">Замечание учителя</div>
+          <div class="bar-track"><div class="bar-fill" style="width:75%;background:var(--accent2)"><span class="bar-num">75%</span></div></div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-label">Речевые проблемы</div>
+          <div class="bar-track"><div class="bar-fill" style="width:68%;background:var(--accent3)"><span class="bar-num">68%</span></div></div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-label">Социальная изоляция</div>
+          <div class="bar-track"><div class="bar-fill" style="width:60%;background:var(--accent4)"><span class="bar-num">60%</span></div></div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-label">Школьный утренник</div>
+          <div class="bar-track"><div class="bar-fill" style="width:55%;background:#f0a060"><span class="bar-num">55%</span></div></div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-label">Рекомендация психолога</div>
+          <div class="bar-track"><div class="bar-fill" style="width:45%;background:#a07ee8"><span class="bar-num">45%</span></div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="chart-card">
+      <div class="chart-title">Каналы поиска решения</div>
+      <div class="chart-subtitle">Где ЦА ищет информацию</div>
+      <div class="bar-chart">
+        <div class="bar-row">
+          <div class="bar-label">Рекомендации мам</div>
+          <div class="bar-track"><div class="bar-fill" style="width:85%;background:var(--accent)"><span class="bar-num">85%</span></div></div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-label">Яндекс поиск</div>
+          <div class="bar-track"><div class="bar-fill" style="width:78%;background:var(--accent2)"><span class="bar-num">78%</span></div></div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-label">ВКонтакте группы</div>
+          <div class="bar-track"><div class="bar-fill" style="width:65%;background:var(--accent3)"><span class="bar-num">65%</span></div></div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-label">Школьный психолог</div>
+          <div class="bar-track"><div class="bar-fill" style="width:50%;background:var(--accent4)"><span class="bar-num">50%</span></div></div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-label">Родит. форумы</div>
+          <div class="bar-track"><div class="bar-fill" style="width:42%;background:#f0a060"><span class="bar-num">42%</span></div></div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-label">Логопед</div>
+          <div class="bar-track"><div class="bar-fill" style="width:35%;background:#a07ee8"><span class="bar-num">35%</span></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="full-card">
+    <h3>Эмоциональный путь клиента</h3>
+    <div style="display:flex;flex-direction:column;gap:20px">
+      <div>
+        <div style="font-size:11px;text-transform:uppercase;letter-spacing:2px;color:var(--muted);margin-bottom:12px">Детская аудитория (родитель)</div>
+        <div class="emotion-flow">
+          <div class="emotion before">😟 Тревога<br>Вина<br>Страх за будущее</div>
+          <div class="arrow-emo">→</div>
+          <div class="emotion" style="border-color:var(--accent);color:var(--accent)">🔍 Поиск<br>Сравнение<br>Консультации</div>
+          <div class="arrow-emo">→</div>
+          <div class="emotion" style="border-color:var(--accent2);color:var(--accent2)">⏳ В процессе<br>Ожидание<br>Напряжение</div>
+          <div class="arrow-emo">→</div>
+          <div class="emotion after">😊 Облегчение<br>Гордость<br>Уверенность</div>
+        </div>
+      </div>
+      <div>
+        <div style="font-size:11px;text-transform:uppercase;letter-spacing:2px;color:var(--muted);margin-bottom:12px">Взрослая аудитория (IT-специалист)</div>
+        <div class="emotion-flow">
+          <div class="emotion before">😰 Синдром<br>самозванца<br>Страх презентаций</div>
+          <div class="arrow-emo">→</div>
+          <div class="emotion" style="border-color:var(--accent);color:var(--accent)">🎭 Поиск<br>безопасной<br>среды</div>
+          <div class="arrow-emo">→</div>
+          <div class="emotion" style="border-color:var(--accent2);color:var(--accent2)">🎯 Обучение<br>Практика<br>Рост</div>
+          <div class="arrow-emo">→</div>
+          <div class="emotion after">💪 Уверенность<br>Карьерный рост<br>Влиятельность</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="full-card">
+    <h3>Критерии выполнения работы (Definition of Done)</h3>
+    <div class="inline-3col" style="gap:16px">
+      <div style="background:var(--bg);border-radius:8px;padding:16px;border:1px solid var(--border)">
+        <div style="font-size:11px;text-transform:uppercase;letter-spacing:2px;color:var(--accent);margin-bottom:10px">1 Месяц</div>
+        <div class="styled-list">
+          <div class="styled-item"><div class="styled-bullet"></div>Ребёнок охотно идёт на занятия</div>
+          <div class="styled-item"><div class="styled-bullet"></div>Нет слёз и капризов</div>
+          <div class="styled-item"><div class="styled-bullet"></div>Первые новые знакомства в группе</div>
+        </div>
+      </div>
+      <div style="background:var(--bg);border-radius:8px;padding:16px;border:1px solid var(--border)">
+        <div style="font-size:11px;text-transform:uppercase;letter-spacing:2px;color:var(--accent2);margin-bottom:10px">3 Месяца</div>
+        <div class="styled-list">
+          <div class="styled-item"><div class="styled-bullet" style="background:var(--accent2)"></div>Улучшение речи/дикции</div>
+          <div class="styled-item"><div class="styled-bullet" style="background:var(--accent2)"></div>Чаще поднимает руку в классе</div>
+          <div class="styled-item"><div class="styled-bullet" style="background:var(--accent2)"></div>Позитивный отзыв учителя</div>
+        </div>
+      </div>
+      <div style="background:var(--bg);border-radius:8px;padding:16px;border:1px solid var(--border)">
+        <div style="font-size:11px;text-transform:uppercase;letter-spacing:2px;color:var(--accent4);margin-bottom:10px">1 Год</div>
+        <div class="styled-list">
+          <div class="styled-item"><div class="styled-bullet" style="background:var(--accent4)"></div>Выступление на сцене</div>
+          <div class="styled-item"><div class="styled-bullet" style="background:var(--accent4)"></div>Инициирует общение сам</div>
+          <div class="styled-item"><div class="styled-bullet" style="background:var(--accent4)"></div>Родитель активно рекомендует</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== TAB 2: СЕГМЕНТЫ ===== -->
+<div class="tab-panel" id="panel-2">
+  <div class="section-title">Сегменты целевой аудитории</div>
+  <div class="section-desc">7 ключевых сегментов по методологии Advanced Jobs To Be Done с детализацией Jobs, контекста и привлекательности</div>
+
+  <div class="segments-grid">
+    <!-- Segment 1 -->
+    <div class="segment-card">
+      <div class="segment-header">
+        <div>
+          <div style="font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:2px;margin-bottom:6px">Сегмент 01</div>
+          <div class="segment-name" style="color:var(--accent)">Застенчивый интроверт</div>
+        </div>
+        <div class="segment-pct" style="color:var(--accent)">22%</div>
+      </div>
+      <div class="segment-bar-wrap">
+        <div class="segment-bar" style="width:88%;background:var(--accent)"></div>
+      </div>
+      <div class="segment-info">
+        <strong style="color:var(--text)">Core Jobs:</strong> Безопасная среда для социализации. Помочь выразить себя без страха критики.<br><br>
+        <strong style="color:var(--text)">Big Job:</strong> Воспитать уверенного человека, не теряя интровертную природу<br><br>
+        <strong style="color:var(--text)">Контекст:</strong> Мать 32–42 л., часто сама интроверт, школьный опыт трудностей<br><br>
+        <strong style="color:var(--text)">LTV:</strong> 12–24 мес. Высокий реферал.
+      </div>
+      <div class="segment-tags">
+        <span class="tag">📍 Приоритет #1</span>
+        <span class="tag">🔁 Долгий LTV</span>
+        <span class="tag">📢 Высокий реферал</span>
+      </div>
+    </div>
+
+    <!-- Segment 2 -->
+    <div class="segment-card">
+      <div class="segment-header">
+        <div>
+          <div style="font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:2px;margin-bottom:6px">Сегмент 02</div>
+          <div class="segment-name" style="color:var(--accent2)">Речевые проблемы</div>
+        </div>
+        <div class="segment-pct" style="color:var(--accent2)">18%</div>
+      </div>
+      <div class="segment-bar-wrap">
+        <div class="segment-bar" style="width:72%;background:var(--accent2)"></div>
+      </div>
+      <div class="segment-info">
+        <strong style="color:var(--text)">Core Jobs:</strong> Специализированная помощь при заикании, картавости, тихом голосе<br><br>
+        <strong style="color:var(--text)">Big Job:</strong> Равные возможности с другими детьми, предотвратить психологическую травму<br><br>
+        <strong style="color:var(--text)">Контекст:</strong> Мать 35–45 л., тревога, чувство вины что не заметила раньше<br><br>
+        <strong style="color:var(--text)">Уникальный кейс:</strong> Устранение заикания за год — мальчик сыграл спектакль
+      </div>
+      <div class="segment-tags">
+        <span class="tag">📍 Приоритет #2</span>
+        <span class="tag">💰 Готовы платить</span>
+        <span class="tag">🎯 Ясная боль</span>
+      </div>
+    </div>
+
+    <!-- Segment 3 -->
+    <div class="segment-card">
+      <div class="segment-header">
+        <div>
+          <div style="font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:2px;margin-bottom:6px">Сегмент 03</div>
+          <div class="segment-name" style="color:var(--accent3)">Гиперактивный ребёнок</div>
+        </div>
+        <div class="segment-pct" style="color:var(--accent3)">15%</div>
+      </div>
+      <div class="segment-bar-wrap">
+        <div class="segment-bar" style="width:60%;background:var(--accent3)"></div>
+      </div>
+      <div class="segment-info">
+        <strong style="color:var(--text)">Core Jobs:</strong> Канализировать энергию, развить саморегуляцию без медикаментов<br><br>
+        <strong style="color:var(--text)">Big Job:</strong> Превратить "проблемного" ребёнка в лидера. Энергия → сильная сторона<br><br>
+        <strong style="color:var(--text)">Контекст:</strong> Перепробовали спорт. Уже усталые от жалоб учителей. Оба родителя работают<br><br>
+        <strong style="color:var(--text)">Белое пятно:</strong> Никто из театр. студий не позиционирует работу с гиперактивностью
+      </div>
+      <div class="segment-tags">
+        <span class="tag">⚡ Белое пятно</span>
+        <span class="tag">📢 Высокий реферал</span>
+        <span class="tag">🏫 Партнёрство школ</span>
+      </div>
+    </div>
+
+    <!-- Segment 4 -->
+    <div class="segment-card">
+      <div class="segment-header">
+        <div>
+          <div style="font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:2px;margin-bottom:6px">Сегмент 04</div>
+          <div class="segment-name" style="color:var(--accent4)">Перфекционист</div>
+        </div>
+        <div class="segment-pct" style="color:var(--accent4)">11%</div>
+      </div>
+      <div class="segment-bar-wrap">
+        <div class="segment-bar" style="width:44%;background:var(--accent4)"></div>
+      </div>
+      <div class="segment-info">
+        <strong style="color:var(--text)">Core Jobs:</strong> Среда где ошибки — норма. Принять себя, развить творческое мышление<br><br>
+        <strong style="color:var(--text)">Big Job:</strong> Воспитать любознательного, берущего риск человека, умеющего с неудачами<br><br>
+        <strong style="color:var(--text)">Контекст:</strong> Академическая семья, история "хорошего" ребёнка, критика от родителей<br><br>
+        <strong style="color:var(--text)">LTV:</strong> Часто переходят в старшие группы, становятся амбассадорами
+      </div>
+      <div class="segment-tags">
+        <span class="tag">🎭 Амбассадоры</span>
+        <span class="tag">🔁 Долгий LTV</span>
+      </div>
+    </div>
+
+    <!-- Segment 5 -->
+    <div class="segment-card">
+      <div class="segment-header">
+        <div>
+          <div style="font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:2px;margin-bottom:6px">Сегмент 05</div>
+          <div class="segment-name" style="color:#f0a060">IT-специалист</div>
+        </div>
+        <div class="segment-pct" style="color:#f0a060">9%</div>
+      </div>
+      <div class="segment-bar-wrap">
+        <div class="segment-bar" style="width:36%;background:#f0a060"></div>
+      </div>
+      <div class="segment-info">
+        <strong style="color:var(--text)">Core Jobs:</strong> Устранить ком. барьеры. Уверенность в презентациях. Нетворкинг<br><br>
+        <strong style="color:var(--text)">Big Job:</strong> Выйти на новый уровень. Стать видимым лидером. Карьерный рост<br><br>
+        <strong style="color:var(--text)">Контекст:</strong> 28–35 л., интроверт, технарь. Требования к soft skills растут<br><br>
+        <strong style="color:var(--text)">Потенциал:</strong> Корпоративные программы B2B через HR-отделы
+      </div>
+      <div class="segment-tags">
+        <span class="tag">💎 Высокий чек</span>
+        <span class="tag">🏢 B2B потенциал</span>
+        <span class="tag">⚡ Быстрый результат</span>
+      </div>
+    </div>
+
+    <!-- Segment 6 -->
+    <div class="segment-card">
+      <div class="segment-header">
+        <div>
+          <div style="font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:2px;margin-bottom:6px">Сегмент 06</div>
+          <div class="segment-name" style="color:#a07ee8">Амбиц. родитель</div>
+        </div>
+        <div class="segment-pct" style="color:#a07ee8">7%</div>
+      </div>
+      <div class="segment-bar-wrap">
+        <div class="segment-bar" style="width:28%;background:#a07ee8"></div>
+      </div>
+      <div class="segment-info">
+        <strong style="color:var(--text)">Core Jobs:</strong> Подготовить к творческой карьере, создать портфолио, кастинги<br><br>
+        <strong style="color:var(--text)">Big Job:</strong> Дать инструменты для успешной карьеры актёра/медиа-лица<br><br>
+        <strong style="color:var(--text)">Контекст:</strong> Часто мать с нереализованными артист. амбициями. Высокий доход<br><br>
+        <strong style="color:var(--text)">Риск:</strong> Острая конкуренция с другими семьями, давление на ребёнка
+      </div>
+      <div class="segment-tags">
+        <span class="tag">💰 Высокий чек</span>
+        <span class="tag">📅 3–4 года LTV</span>
+      </div>
+    </div>
+
+    <!-- Segment 7 -->
+    <div class="segment-card">
+      <div class="segment-header">
+        <div>
+          <div style="font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:2px;margin-bottom:6px">Сегмент 07</div>
+          <div class="segment-name" style="color:#e8e87e">Ребёнок с травмой</div>
+        </div>
+        <div class="segment-pct" style="color:#e8e87e">6%</div>
+      </div>
+      <div class="segment-bar-wrap">
+        <div class="segment-bar" style="width:24%;background:#e8e87e"></div>
+      </div>
+      <div class="segment-info">
+        <strong style="color:var(--text)">Core Jobs:</strong> Безопасная среда после буллинга/развода/потери. Восстановить доверие<br><br>
+        <strong style="color:var(--text)">Big Job:</strong> Вернуть ребёнку детство — радость, безопасность, возможность<br><br>
+        <strong style="color:var(--text)">Контекст:</strong> Мать с чувством вины и горем. Ребёнок замкнулся или стал агрессивным<br><br>
+        <strong style="color:var(--text)">Потенциал:</strong> Гранты, благотворительность, уникальный социальный контент
+      </div>
+      <div class="segment-tags">
+        <span class="tag">⚡ Белое пятно</span>
+        <span class="tag">❤️ Социальный импакт</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="chart-card" style="margin-bottom:0">
+    <div class="chart-title">Сравнительный анализ сегментов</div>
+    <div class="chart-subtitle">LTV, средний чек, срок сотрудничества и реферальный потенциал</div>
+    <div class="table-wrap" style="border-radius:8px;margin-bottom:0">
+      <table>
+        <thead>
+          <tr>
+            <th>Сегмент</th>
+            <th>Доля</th>
+            <th>Ср. LTV</th>
+            <th>Срок сотр.</th>
+            <th>Реферал</th>
+            <th>Средний чек/мес</th>
+            <th>B2B потенциал</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td style="color:var(--accent)">Застенчивый интроверт</td><td>22%</td><td style="color:var(--green)">102 600₽</td><td>12–24 мес</td><td>★★★★★</td><td>~12 000₽</td><td>—</td></tr>
+          <tr><td style="color:var(--accent2)">Речевые проблемы</td><td>18%</td><td style="color:var(--green)">85 000₽</td><td>6–12 мес</td><td>★★★★☆</td><td>~12 000₽</td><td>—</td></tr>
+          <tr><td style="color:var(--accent3)">Гиперактивный</td><td>15%</td><td style="color:var(--green)">96 000₽</td><td>8–16 мес</td><td>★★★★★</td><td>~12 000₽</td><td>Школы</td></tr>
+          <tr><td style="color:var(--accent4)">Перфекционист</td><td>11%</td><td style="color:var(--green)">144 000₽</td><td>12–24 мес</td><td>★★★☆☆</td><td>~12 000₽</td><td>—</td></tr>
+          <tr><td style="color:#f0a060">IT-специалист</td><td>9%</td><td style="color:var(--green)">60 000₽</td><td>4–6 мес</td><td>★★★★☆</td><td>~15 000₽</td><td>HR/Корп.</td></tr>
+          <tr><td style="color:#a07ee8">Амбиц. родитель</td><td>7%</td><td style="color:var(--green)">180 000₽</td><td>36–48 мес</td><td>★★☆☆☆</td><td>~15 000₽</td><td>—</td></tr>
+          <tr><td style="color:#e8e87e">Ребёнок с травмой</td><td>6%</td><td>—</td><td>12+ мес</td><td>★★☆☆☆</td><td>~10 000₽</td><td>Гранты</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- ===== TAB 3: КОНКУРЕНТЫ ===== -->
+<div class="tab-panel" id="panel-3">
+  <div class="section-title">Конкурентный анализ</div>
+  <div class="section-desc">50+ игроков на рынке. Детальный разбор ключевых конкурентов, их сильных и слабых сторон, покрытия ЦА</div>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Игрок</th>
+          <th>Позиционирование</th>
+          <th>ЦА / Сегмент</th>
+          <th>Охват / Масштаб</th>
+          <th>Сильные стороны</th>
+          <th>Слабые стороны</th>
+          <th>Ср. цена</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="zigma-row">
+          <td><strong>Зигма Арт</strong></td>
+          <td>Системный трансформатор личности. Вахтанговская школа + психолог</td>
+          <td>Дети 5–16 л. + взрослые IT</td>
+          <td>~100 уч., 1 точка (центр)</td>
+          <td>Психолог 14 л., «Золотая маска», 3 дисц. × 3 часа, малые группы</td>
+          <td>Мало заявок, нет менеджера продаж, 1 локация</td>
+          <td>11–12 тыс₽</td>
+        </tr>
+        <tr>
+          <td><strong>Талантино</strong></td>
+          <td>Путь в кино и ТВ. Профессиональная подготовка звёзд</td>
+          <td>Амбиц. родители будущих актёров</td>
+          <td>5 студий в Москве, 1565+ ролей</td>
+          <td>Реальные роли в кино, сильный бренд, кейсы результатов</td>
+          <td>Только для будущих актёров, высокая цена, нет психол. подхода</td>
+          <td>Выше рынка</td>
+        </tr>
+        <tr>
+          <td><strong>Ирбис</strong></td>
+          <td>Развитие творческих способностей. Инновационный подход</td>
+          <td>Дети 4–17 лет</td>
+          <td>Сеть филиалов в Москве</td>
+          <td>Доступность (много точек), позиц. на развитие личности</td>
+          <td>Слабые педагоги (отзывы), непрозрачная траектория, нет результатов</td>
+          <td>Рынок</td>
+        </tr>
+        <tr>
+          <td><strong>Русская речь</strong></td>
+          <td>"Развиваем людей, не артистов". Речь и культура</td>
+          <td>Дети с речевыми проблемами</td>
+          <td>400 уч., 2 филиала, лицензия</td>
+          <td>Образовательная лицензия, 4 дисциплины, позиц. на личность</td>
+          <td>Группы 15+, занятия 45 мин., вокал лишь 30 мин., нет психологии</td>
+          <td>Рынок</td>
+        </tr>
+        <tr>
+          <td><strong>Gogol School</strong></td>
+          <td>Soft skills, уверенность, самовыражение. Современный язык</td>
+          <td>Молодёжь, взрослые IT</td>
+          <td>Центр, 1 точка (ул. Казакова)</td>
+          <td>Современный язык, акцент soft skills, центр Москвы</td>
+          <td>Меньше проф. результатов, нет детских программ, нет психолога</td>
+          <td>Рынок</td>
+        </tr>
+        <tr>
+          <td><strong>Школа Театра Москвы</strong></td>
+          <td>Актёрство по Станиславскому. Внутренняя свобода</td>
+          <td>Взрослые (только)</td>
+          <td>1 точка</td>
+          <td>Действующие актёры театра/кино, глубокий теор. подход</td>
+          <td>Только взрослые, нет детских программ, нет психологии</td>
+          <td>Рынок</td>
+        </tr>
+        <tr>
+          <td><strong>Отражение</strong></td>
+          <td>Работа с внутренними состояниями. Комплексное развитие</td>
+          <td>Широкая, 1 спектакль в финале</td>
+          <td>1 точка</td>
+          <td>Психологическая работа с эмоциями, спектакль в конце курса</td>
+          <td>Нет упоминания Вахтанговской методики, нет чёткого позиц.</td>
+          <td>Рынок</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="chart-row">
+    <div class="chart-card">
+      <div class="chart-title">Сравнение ключевых параметров</div>
+      <div class="chart-subtitle">Зигма Арт vs конкуренты (10-балльная шкала)</div>
+      <div class="radar-wrap">
+        <svg width="240" height="240" viewBox="0 0 240 240">
+          <!-- Grid circles -->
+          <circle cx="120" cy="120" r="90" fill="none" stroke="#2a2a40" stroke-width="1"/>
+          <circle cx="120" cy="120" r="60" fill="none" stroke="#2a2a40" stroke-width="1"/>
+          <circle cx="120" cy="120" r="30" fill="none" stroke="#2a2a40" stroke-width="1"/>
+          <!-- Axes (6 axes) -->
+          <line x1="120" y1="30" x2="120" y2="210" stroke="#2a2a40" stroke-width="1"/>
+          <line x1="42" y1="75" x2="198" y2="165" stroke="#2a2a40" stroke-width="1"/>
+          <line x1="42" y1="165" x2="198" y2="75" stroke="#2a2a40" stroke-width="1"/>
+          <!-- Axis labels -->
+          <text x="120" y="22" text-anchor="middle" fill="#8888aa" font-size="9" font-family="IBM Plex Sans">Психология</text>
+          <text x="210" y="70" text-anchor="start" fill="#8888aa" font-size="9" font-family="IBM Plex Sans">Масштаб</text>
+          <text x="210" y="170" text-anchor="start" fill="#8888aa" font-size="9" font-family="IBM Plex Sans">Цена/дост.</text>
+          <text x="120" y="226" text-anchor="middle" fill="#8888aa" font-size="9" font-family="IBM Plex Sans">Рез-ты</text>
+          <text x="30" y="170" text-anchor="end" fill="#8888aa" font-size="9" font-family="IBM Plex Sans">Методика</text>
+          <text x="30" y="70" text-anchor="end" fill="#8888aa" font-size="9" font-family="IBM Plex Sans">Педагоги</text>
+          <!-- Зигма Арт: 9,3,8,8,9,8 из 10 → r=90max -->
+          <!-- ax1:120,30→120,120-81=39 | ax2:198,75→120+27,120-15.6=104 | ax3:198,165→120+24,120+13=133 | ax4:120,210→120,120+72=192 | ax5:42,165→120-72,120+13=48,133 | ax6:42,75→120-24,120-15=96,105-->
+          <polygon points="120,39 145,105 143,133 120,192 48,133 96,105" fill="rgba(232,201,126,0.15)" stroke="#e8c97e" stroke-width="2"/>
+          <!-- Ирбис: 2,8,6,4,3,4 -->
+          <polygon points="120,102 174,90 157,149 120,192 78,149 96,90" fill="rgba(232,126,158,0.1)" stroke="#e87e9e" stroke-width="1.5" stroke-dasharray="4,3"/>
+          <!-- Русская речь: 3,7,7,6,5,5 -->
+          <polygon points="120,93 166,95 157,142 120,174 78,142 105,95" fill="rgba(126,158,232,0.1)" stroke="#7e9ee8" stroke-width="1.5" stroke-dasharray="4,3"/>
+        </svg>
+        <div class="radar-legend">
+          <div class="radar-item"><div class="radar-line" style="background:var(--accent)"></div><span>Зигма Арт</span></div>
+          <div class="radar-item"><div class="radar-line" style="background:var(--accent3)"></div><span>Ирбис</span></div>
+          <div class="radar-item"><div class="radar-line" style="background:var(--accent2)"></div><span>Русская речь</span></div>
+          <div style="margin-top:16px;font-size:11px;color:var(--muted);line-height:1.6">
+            Психология → масштаб → цена →<br>результаты → методика → педагоги
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="chart-card">
+      <div class="chart-title">Охват сегментов ЦА конкурентами</div>
+      <div class="chart-subtitle">% закрытия потребности сегмента</div>
+      <div class="bar-chart">
+        <div style="font-size:11px;color:var(--muted);margin-bottom:8px;text-transform:uppercase;letter-spacing:1px">Застенчивый интроверт</div>
+        <div class="bar-row" style="margin-bottom:12px">
+          <div class="bar-label" style="width:80px">Ирбис</div>
+          <div class="bar-track"><div class="bar-fill" style="width:50%;background:#e87e9e"><span class="bar-num">50%</span></div></div>
+        </div>
+        <div style="font-size:11px;color:var(--muted);margin-bottom:8px;text-transform:uppercase;letter-spacing:1px">Речевые проблемы</div>
+        <div class="bar-row" style="margin-bottom:12px">
+          <div class="bar-label" style="width:80px">Рус. речь</div>
+          <div class="bar-track"><div class="bar-fill" style="width:60%;background:#7e9ee8"><span class="bar-num">60%</span></div></div>
+        </div>
+        <div style="font-size:11px;color:var(--muted);margin-bottom:8px;text-transform:uppercase;letter-spacing:1px">Гиперактивный</div>
+        <div class="bar-row" style="margin-bottom:12px">
+          <div class="bar-label" style="width:80px">Никто</div>
+          <div class="bar-track"><div class="bar-fill" style="width:10%;background:var(--red)"><span class="bar-num" style="display:none"></span></div></div>
+        </div>
+        <div style="font-size:11px;color:var(--muted);margin-bottom:8px;text-transform:uppercase;letter-spacing:1px">IT / Soft skills</div>
+        <div class="bar-row" style="margin-bottom:12px">
+          <div class="bar-label" style="width:80px">Gogol School</div>
+          <div class="bar-track"><div class="bar-fill" style="width:55%;background:#7ee8b8"><span class="bar-num">55%</span></div></div>
+        </div>
+        <div style="font-size:11px;color:var(--muted);margin-bottom:8px;text-transform:uppercase;letter-spacing:1px">Буллинг / травма</div>
+        <div class="bar-row">
+          <div class="bar-label" style="width:80px">Никто</div>
+          <div class="bar-track"><div class="bar-fill" style="width:5%;background:var(--red)"><span class="bar-num" style="display:none"></span></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== TAB 4: ПОЗИЦИОНИРОВАНИЕ ===== -->
+<div class="tab-panel" id="panel-4">
+  <div class="section-title">Позиционирование и белые пятна</div>
+  <div class="section-desc">Карта конкурентного позиционирования и незакрытые ниши рынка</div>
+
+  <div class="chart-card" style="margin-bottom:20px">
+    <div class="chart-title">Карта позиционирования</div>
+    <div class="chart-subtitle">Ось X: массовость → профессионализм | Ось Y: досуг → трансформация личности</div>
+    <div class="pos-map">
+      <div class="axis-x"></div>
+      <div class="axis-y"></div>
+      <div class="axis-label" style="top:52%;left:2%">Массовое</div>
+      <div class="axis-label" style="top:52%;right:2%">Профессиональное</div>
+      <div class="axis-label" style="top:2%;left:52%">Трансформация</div>
+      <div class="axis-label" style="bottom:2%;left:52%">Досуг</div>
+
+      <!-- Зигма Арт: профессиональное + трансформация -->
+      <div class="pos-brand" style="left:72%;top:25%">
+        <div class="pos-dot" style="background:var(--accent);border-color:var(--accent);width:18px;height:18px"></div>
+        <div class="pos-name" style="color:var(--accent)">Зигма Арт ★</div>
+      </div>
+      <!-- Талантино: очень профессиональное, больше карьера -->
+      <div class="pos-brand" style="left:88%;top:35%">
+        <div class="pos-dot" style="background:var(--accent3);border-color:var(--accent3)"></div>
+        <div class="pos-name" style="color:var(--accent3)">Талантино</div>
+      </div>
+      <!-- Ирбис: массовое + досуг -->
+      <div class="pos-brand" style="left:25%;top:65%">
+        <div class="pos-dot" style="background:var(--accent2);border-color:var(--accent2)"></div>
+        <div class="pos-name" style="color:var(--accent2)">Ирбис</div>
+      </div>
+      <!-- Русская речь: средне-профессиональное, трансформация речи -->
+      <div class="pos-brand" style="left:62%;top:38%">
+        <div class="pos-dot" style="background:#f0a060;border-color:#f0a060"></div>
+        <div class="pos-name" style="color:#f0a060">Русская речь</div>
+      </div>
+      <!-- Gogol School: среднее, трансформация -->
+      <div class="pos-brand" style="left:48%;top:30%">
+        <div class="pos-dot" style="background:var(--accent4);border-color:var(--accent4)"></div>
+        <div class="pos-name" style="color:var(--accent4)">Gogol School</div>
+      </div>
+      <!-- Школа Театра Москвы: профессиональное, трансформация -->
+      <div class="pos-brand" style="left:78%;top:20%">
+        <div class="pos-dot" style="background:#a07ee8;border-color:#a07ee8"></div>
+        <div class="pos-name" style="color:#a07ee8">Школа Театра</div>
+      </div>
+      <!-- Отражение: среднее -->
+      <div class="pos-brand" style="left:55%;top:42%">
+        <div class="pos-dot" style="background:#e8e87e;border-color:#e8e87e"></div>
+        <div class="pos-name" style="color:#e8e87e">Отражение</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="highlight-box" style="margin-bottom:20px">
+    <div style="font-size:13px;text-transform:uppercase;letter-spacing:2px;color:var(--accent);margin-bottom:10px">Рекомендуемое позиционирование</div>
+    <p style="font-size:18px;font-family:'Playfair Display',serif;font-weight:700;color:var(--text);line-height:1.5">
+      "Единственная театральная студия в Москве с системным психолого-педагогическим подходом по методике Вахтанговской школы — для уверенности и раскрепощения ребёнка <span style="color:var(--accent)">без стресса и давления</span>"
+    </p>
+  </div>
+
+  <div class="spots-grid">
+    <div class="spot-card">
+      <div class="spot-badge">Белое пятно #1</div>
+      <div class="spot-title">Психолого-пед. комплекс</div>
+      <div class="spot-desc">Никто не комбинирует театральные методы + психологическое сопровождение сертифицированного специалиста. Это уникальная ниша.</div>
+    </div>
+    <div class="spot-card">
+      <div class="spot-badge">Белое пятно #2</div>
+      <div class="spot-title">Гиперактивные дети</div>
+      <div class="spot-desc">Ни одна театральная студия не позиционирует себя как решение для детей с СДВГ. Огромный незаполненный сегмент.</div>
+    </div>
+    <div class="spot-card">
+      <div class="spot-badge">Белое пятно #3</div>
+      <div class="spot-title">Буллинг — реабилитация</div>
+      <div class="spot-desc">«Театр как пространство психологической реабилитации» — этого нет ни в чьей коммуникации. Сильная эмоциональная позиция.</div>
+    </div>
+    <div class="spot-card">
+      <div class="spot-badge">Белое пятно #4</div>
+      <div class="spot-title">Soft skills B2B</div>
+      <div class="spot-desc">Гибридные форматы: театральные техники + бизнес-кейсы + поддержка карьерного роста. Никто не делает это системно.</div>
+    </div>
+    <div class="spot-card">
+      <div class="spot-badge">Белое пятно #5</div>
+      <div class="spot-title">Интроверт = норма</div>
+      <div class="spot-desc">Конкуренты говорят «раскрепощение» — это пугает. «Зигма Арт» может говорить: "Не переделываем, раскрываем природу".</div>
+    </div>
+    <div class="spot-card">
+      <div class="spot-badge">Белое пятно #6</div>
+      <div class="spot-title">Долгосрочная трансформация</div>
+      <div class="spot-desc">Все продают быстрые результаты и кастинги. Никто не акцентирует системные личностные изменения на годы вперёд.</div>
+    </div>
+  </div>
+
+  <div class="swot-grid">
+    <div class="swot-card">
+      <div class="swot-title" style="color:var(--accent4)">✅ Сильные стороны</div>
+      <div class="swot-items">
+        <div class="swot-item"><div class="swot-icon">🎭</div>Методика Вахтанговской школы — уникальная</div>
+        <div class="swot-item"><div class="swot-icon">🧠</div>Педагог-психолог с 14-летним опытом</div>
+        <div class="swot-item"><div class="swot-icon">🥇</div>Педагоги — участники «Золотой маски»</div>
+        <div class="swot-item"><div class="swot-icon">⏱️</div>3 дисциплины × 3 часа (конкуренты: 45 мин)</div>
+        <div class="swot-item"><div class="swot-icon">👥</div>Малые группы до 15 человек</div>
+        <div class="swot-item"><div class="swot-icon">📊</div>CRM с комментариями после каждого занятия</div>
+        <div class="swot-item"><div class="swot-icon">🎬</div>Кейс: устранение заикания за год (спектакль)</div>
+        <div class="swot-item"><div class="swot-icon">🏆</div>95% поступаемость в театр. вузы</div>
+      </div>
+    </div>
+    <div class="swot-card">
+      <div class="swot-title" style="color:var(--red)">⚠️ Слабые стороны</div>
+      <div class="swot-items">
+        <div class="swot-item"><div class="swot-icon">📉</div>~8–10 заявок в неделю (цель: 15+)</div>
+        <div class="swot-item"><div class="swot-icon">👔</div>Нет выделенного менеджера продаж</div>
+        <div class="swot-item"><div class="swot-icon">📍</div>Только 1 локация в центре</div>
+        <div class="swot-item"><div class="swot-icon">📄</div>Нет образовательной лицензии</div>
+        <div class="swot-item"><div class="swot-icon">🏠</div>Аренда — нет собственного помещения</div>
+      </div>
+    </div>
+    <div class="swot-card">
+      <div class="swot-title" style="color:var(--accent2)">🚀 Возможности</div>
+      <div class="swot-items">
+        <div class="swot-item"><div class="swot-icon">🏢</div>B2B корпоративные программы (IT-компании)</div>
+        <div class="swot-item"><div class="swot-icon">🏫</div>Партнёрство со школами, психологами, логопедами</div>
+        <div class="swot-item"><div class="swot-icon">📱</div>TikTok/Reels контент — логопед + театр</div>
+        <div class="swot-item"><div class="swot-icon">⚡</div>Гиперактивные дети — незакрытая ниша</div>
+        <div class="swot-item"><div class="swot-icon">📋</div>Образовательная лицензия → доверие и B2B</div>
+        <div class="swot-item"><div class="swot-icon">🌍</div>Онлайн-форматы для регионов</div>
+      </div>
+    </div>
+    <div class="swot-card">
+      <div class="swot-title" style="color:var(--accent3)">⚡ Угрозы</div>
+      <div class="swot-items">
+        <div class="swot-item"><div class="swot-icon">💸</div>Рост аренды, риск потери помещения</div>
+        <div class="swot-item"><div class="swot-icon">🔄</div>Конкуренты скопируют позиционирование</div>
+        <div class="swot-item"><div class="swot-icon">⭐</div>Негативный отзыв о работе с проблемным ребёнком</div>
+        <div class="swot-item"><div class="swot-icon">📊</div>«Ирбис» или «Русская речь» добавят психолога</div>
+        <div class="swot-item"><div class="swot-icon">📉</div>Снижение платёжеспособности ЦА</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== TAB 5: СТРАТЕГИЯ ===== -->
+<div class="tab-panel" id="panel-5">
+  <div class="section-title">Маркетинговая стратегия</div>
+  <div class="section-desc">Пошаговый план действий, продуктовые решения и коммуникационные каналы</div>
+
+  <div class="timeline">
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-period">0–30 ДНЕЙ · БЫСТРЫЕ ПОБЕДЫ</div>
+      <div class="timeline-title">Фундамент: заявки и конверсия</div>
+      <div class="timeline-items">
+        <div class="timeline-task">Настроить автоматические сообщения после заявки (скорость ответа = конверсия)</div>
+        <div class="timeline-task">Запустить реферальную программу: увеличить премию до 2500₽ (было 1500₽)</div>
+        <div class="timeline-task">Создать отдельный лендинг для сегмента «речевые проблемы» с кейсом устранения заикания</div>
+        <div class="timeline-task">Начать ведение TikTok: короткие упражнения для развития речи дома — бесплатная ценность</div>
+        <div class="timeline-task">Аудит воронки: где теряются заявки → какой этап чинить первым</div>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-dot" style="border-color:var(--accent2)"></div>
+      <div class="timeline-period" style="color:var(--accent2)">1–3 МЕСЯЦА · РАЗВИТИЕ</div>
+      <div class="timeline-title">Масштабирование воронки</div>
+      <div class="timeline-items">
+        <div class="timeline-task">Нанять менеджера по продажам — обработка заявок 24/7</div>
+        <div class="timeline-task">Запустить корпоративную программу soft skills (тестовый интенсив для IT-команд)</div>
+        <div class="timeline-task">Программа «Подготовка к школьным выступлениям» — краткосрочный продукт с быстрым результатом</div>
+        <div class="timeline-task">Оптимизировать воронку: цель 15 заявок/неделю, конверсия в пробное 70%</div>
+        <div class="timeline-task">Партнёрство со школьными психологами и логопедами → реферальная сеть</div>
+        <div class="timeline-task">Яндекс Директ: запросы «заикание у ребёнка», «ребёнок боится выступать», «застенчивый ребёнок»</div>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-dot" style="border-color:var(--accent4)"></div>
+      <div class="timeline-period" style="color:var(--accent4)">3–6 МЕСЯЦЕВ · ЭКСПАНСИЯ</div>
+      <div class="timeline-title">Рост до 150 учеников</div>
+      <div class="timeline-items">
+        <div class="timeline-task">Открыть будние группы для детей → охват нового сегмента по расписанию</div>
+        <div class="timeline-task">Запустить специализированную программу для гиперактивных детей (белое пятно рынка)</div>
+        <div class="timeline-task">Семейные программы «родитель + ребёнок» — новый продукт-крюк</div>
+        <div class="timeline-task">Получить образовательную лицензию → доверие + B2B возможности</div>
+        <div class="timeline-task">Масштабирование до 150 учеников + просчёт второй локации</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="channels-grid">
+    <div class="channel-card">
+      <div class="channel-icon">🎯</div>
+      <div class="channel-name">Яндекс Директ</div>
+      <div class="channel-desc">Запросы: "заикание у ребёнка", "ребёнок боится выступать", "застенчивый ребёнок Москва", "театральная студия для детей". Точечный захват готового спроса.</div>
+    </div>
+    <div class="channel-card">
+      <div class="channel-icon">📱</div>
+      <div class="channel-name">ВКонтакте Таргет</div>
+      <div class="channel-desc">Родительские сообщества по районам Москвы. Таргетинг на мам 30–45 л. с детьми 5–15 лет. Ретаргетинг на тех, кто взаимодействовал.</div>
+    </div>
+    <div class="channel-card">
+      <div class="channel-icon">🤝</div>
+      <div class="channel-name">Партнёры</div>
+      <div class="channel-desc">Школьные психологи, логопеды, педиатры. Реферальная программа для партнёров — % от первой оплаты. Самый качественный трафик.</div>
+    </div>
+    <div class="channel-card">
+      <div class="channel-icon">🎬</div>
+      <div class="channel-name">TikTok / Reels</div>
+      <div class="channel-desc">Контент: упражнения дома, разбор речевых проблем, закулисье занятий. Педагог-психолог как личный бренд → доверие перед продажей.</div>
+    </div>
+    <div class="channel-card">
+      <div class="channel-icon">📢</div>
+      <div class="channel-name">Сарафан</div>
+      <div class="channel-desc">Реферальная программа 2500₽ за приведённого ученика. Текущие родители — лучший канал. Особенно у сегмента «застенчивый» — они активно делятся в группах.</div>
+    </div>
+    <div class="channel-card">
+      <div class="channel-icon">📝</div>
+      <div class="channel-name">Контент-маркетинг</div>
+      <div class="channel-desc">Чек-листы «Как понять, что ребёнку нужна помощь». Кейсы трансформации до/после. Прямые эфиры с психологом о развитии детей.</div>
+    </div>
+  </div>
+
+  <div class="strategy-grid">
+    <div class="strategy-card">
+      <div class="strategy-num">01</div>
+      <div class="strategy-title">Продукт: программа для гиперактивных</div>
+      <div class="strategy-body">Создать отдельную программу с акцентом на саморегуляцию через театральные методы. Позиционировать как «Лидерский потенциал через движение». Партнёрство со школами.</div>
+    </div>
+    <div class="strategy-card">
+      <div class="strategy-num">02</div>
+      <div class="strategy-title">Продукт: интенсив к выступлению</div>
+      <div class="strategy-body">Краткосрочный продукт (4–8 занятий) «Готовимся к утреннику / защите / конкурсу». Низкий порог входа — видимый быстрый результат → конверсия в долгий абонемент.</div>
+    </div>
+    <div class="strategy-card">
+      <div class="strategy-num">03</div>
+      <div class="strategy-title">B2B: корпоративные программы</div>
+      <div class="strategy-body">Soft skills для IT-команд через HR. Интенсив «Публичные выступления для технарей». Потенциал чека 50–150 тыс₽ за корпоративный формат. Начать с 1 тестовой группы.</div>
+    </div>
+    <div class="strategy-card">
+      <div class="strategy-num">04</div>
+      <div class="strategy-title">Лид-магниты и воронка</div>
+      <div class="strategy-body">Чек-лист «5 признаков, что ребёнку нужна помощь с уверенностью» → email/чат → приглашение на пробное. Автоворонка с контентом для каждого сегмента ЦА.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== TAB 6: KPI ===== -->
+<div class="tab-panel" id="panel-6">
+  <div class="section-title">KPI и Метрики</div>
+  <div class="section-desc">Ключевые показатели эффективности, текущие значения и целевые ориентиры</div>
+
+  <div class="kpi-grid">
+    <div class="kpi-card">
+      <div class="kpi-num" style="color:var(--accent)">15</div>
+      <div class="kpi-label">Заявок в неделю</div>
+      <div class="kpi-target">Сейчас: 8–10 · Частота: еженедельно</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-num" style="color:var(--accent2)">70%</div>
+      <div class="kpi-label">Конверсия в пробное</div>
+      <div class="kpi-target">Отслеживать по источникам · ежемесячно</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-num" style="color:var(--accent3)">80%</div>
+      <div class="kpi-label">Пробное → абонемент</div>
+      <div class="kpi-target">Сейчас: 70–80% · Частота: ежемесячно</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-num" style="color:var(--accent4)">85К₽</div>
+      <div class="kpi-label">Средний LTV</div>
+      <div class="kpi-target">1.5 года × 12 000₽ · раз в 6 мес</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-num" style="color:#f0a060">80%</div>
+      <div class="kpi-label">NPS (рекомендации)</div>
+      <div class="kpi-target">Опрос каждые 3 месяца</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-num" style="color:#a07ee8">40%</div>
+      <div class="kpi-label">Доля реферальных</div>
+      <div class="kpi-target">Сейчас: ~30% · ежемесячно</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-num" style="color:var(--green)">85%</div>
+      <div class="kpi-label">Retention rate</div>
+      <div class="kpi-target">Переход во второй семестр</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-num" style="color:var(--accent)">150</div>
+      <div class="kpi-label">Целевое кол-во учеников</div>
+      <div class="kpi-target">Горизонт 6 месяцев</div>
+    </div>
+  </div>
+
+  <div class="chart-row">
+    <div class="chart-card">
+      <div class="chart-title">Воронка конверсий</div>
+      <div class="chart-subtitle">От контакта до постоянного ученика</div>
+      <div style="display:flex;flex-direction:column;gap:6px">
+        <div style="background:rgba(232,201,126,0.2);border:1px solid var(--accent);border-radius:6px;padding:12px 16px;display:flex;justify-content:space-between">
+          <span style="color:var(--accent)">Контакт (трафик)</span><span style="font-family:'IBM Plex Mono',monospace;color:var(--accent)">100%</span>
+        </div>
+        <div style="text-align:center;font-size:11px;color:var(--muted)">↓ конверсия в заявку ~15%</div>
+        <div style="background:rgba(126,158,232,0.15);border:1px solid var(--accent2);border-radius:6px;padding:12px 16px;display:flex;justify-content:space-between">
+          <span style="color:var(--accent2)">Заявка получена</span><span style="font-family:'IBM Plex Mono',monospace;color:var(--accent2)">15 шт/нед.</span>
+        </div>
+        <div style="text-align:center;font-size:11px;color:var(--muted)">↓ конверсия в пробное 70%</div>
+        <div style="background:rgba(232,126,158,0.15);border:1px solid var(--accent3);border-radius:6px;padding:12px 16px;display:flex;justify-content:space-between">
+          <span style="color:var(--accent3)">Пробное занятие</span><span style="font-family:'IBM Plex Mono',monospace;color:var(--accent3)">10–11 чел</span>
+        </div>
+        <div style="text-align:center;font-size:11px;color:var(--muted)">↓ конверсия в абонемент 80%</div>
+        <div style="background:rgba(126,232,184,0.15);border:1px solid var(--accent4);border-radius:6px;padding:12px 16px;display:flex;justify-content:space-between">
+          <span style="color:var(--accent4)">Первый абонемент</span><span style="font-family:'IBM Plex Mono',monospace;color:var(--accent4)">8–9 чел</span>
+        </div>
+        <div style="text-align:center;font-size:11px;color:var(--muted)">↓ Retention 85%</div>
+        <div style="background:rgba(126,232,184,0.25);border:1px solid var(--green);border-radius:6px;padding:12px 16px;display:flex;justify-content:space-between">
+          <span style="color:var(--green)">Постоянный ученик (1+ год)</span><span style="font-family:'IBM Plex Mono',monospace;color:var(--green)">LTV 85К₽</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="chart-card">
+      <div class="chart-title">Дополнительные метрики для сбора</div>
+      <div class="chart-subtitle">Что нужно начать отслеживать немедленно</div>
+      <div style="display:flex;flex-direction:column;gap:12px">
+        <div style="background:var(--bg);border-radius:8px;padding:14px;border:1px solid var(--border)">
+          <div style="font-size:11px;color:var(--accent);text-transform:uppercase;letter-spacing:1px;margin-bottom:6px">Источники заявок</div>
+          <div style="font-size:13px;color:var(--muted)">Детализация по ключевым словам в Яндексе. Какой канал даёт лучшее качество.</div>
+        </div>
+        <div style="background:var(--bg);border-radius:8px;padding:14px;border:1px solid var(--border)">
+          <div style="font-size:11px;color:var(--accent2);text-transform:uppercase;letter-spacing:1px;margin-bottom:6px">Причины отказов</div>
+          <div style="font-size:13px;color:var(--muted)">Почему не пришли на пробное. Почему не купили абонемент. Где потери воронки.</div>
+        </div>
+        <div style="background:var(--bg);border-radius:8px;padding:14px;border:1px solid var(--border)">
+          <div style="font-size:11px;color:var(--accent3);text-transform:uppercase;letter-spacing:1px;margin-bottom:6px">Время до занятия</div>
+          <div style="font-size:13px;color:var(--muted)">Сколько дней от заявки до первого занятия. Цель: менее 3 дней = выше конверсия.</div>
+        </div>
+        <div style="background:var(--bg);border-radius:8px;padding:14px;border:1px solid var(--border)">
+          <div style="font-size:11px;color:var(--accent4);text-transform:uppercase;letter-spacing:1px;margin-bottom:6px">География клиентов</div>
+          <div style="font-size:13px;color:var(--muted)">Откуда едут. Откуда больше всего — там открывать второй филиал.</div>
+        </div>
+        <div style="background:var(--bg);border-radius:8px;padding:14px;border:1px solid var(--border)">
+          <div style="font-size:11px;color:#f0a060;text-transform:uppercase;letter-spacing:1px;margin-bottom:6px">Средний возраст ребёнка</div>
+          <div style="font-size:13px;color:var(--muted)">Для продуктовых решений: какой возраст приносит больше LTV и рекоменд.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="full-card">
+    <h3>Финансовые ориентиры</h3>
+    <div class="inline-4col" style="gap:16px">
+      <div style="background:var(--bg);border-radius:8px;padding:20px;text-align:center;border:1px solid var(--border)">
+        <div style="font-family:'Playfair Display',serif;font-size:28px;font-weight:700;color:var(--accent);margin-bottom:6px">100</div>
+        <div style="font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:1px">Уч. сейчас</div>
+        <div style="font-size:13px;color:var(--text);margin-top:6px">~1.2 млн₽/мес</div>
+      </div>
+      <div style="background:var(--bg);border-radius:8px;padding:20px;text-align:center;border:1px solid var(--border)">
+        <div style="font-family:'Playfair Display',serif;font-size:28px;font-weight:700;color:var(--accent2);margin-bottom:6px">150</div>
+        <div style="font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:1px">Цель 6 мес</div>
+        <div style="font-size:13px;color:var(--text);margin-top:6px">~1.8 млн₽/мес</div>
+      </div>
+      <div style="background:var(--bg);border-radius:8px;padding:20px;text-align:center;border:1px solid var(--border)">
+        <div style="font-family:'Playfair Display',serif;font-size:28px;font-weight:700;color:var(--accent3);margin-bottom:6px">85K₽</div>
+        <div style="font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:1px">LTV на ученика</div>
+        <div style="font-size:13px;color:var(--text);margin-top:6px">1.5 года × 12К₽</div>
+      </div>
+      <div style="background:var(--bg);border-radius:8px;padding:20px;text-align:center;border:1px solid var(--border)">
+        <div style="font-family:'Playfair Display',serif;font-size:28px;font-weight:700;color:var(--accent4);margin-bottom:6px">+50%</div>
+        <div style="font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:1px">Рост выручки</div>
+        <div style="font-size:13px;color:var(--text);margin-top:6px">При достижении 150 уч.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== TAB 7: РИСКИ ===== -->
+<div class="tab-panel" id="panel-7">
+  <div class="section-title">Риски и митигация</div>
+  <div class="section-desc">Ключевые угрозы для бизнеса, вероятность и пути снижения</div>
+
+  <div class="risks-grid">
+    <div class="risk-card" style="border-left-color:var(--red)">
+      <div class="risk-level" style="color:var(--red)">🔴 Высокий риск</div>
+      <div class="risk-title">Рост арендной платы</div>
+      <div class="risk-body">Отсутствие собственного помещения — главная финансовая угроза. Арендодатель может поднять цену или расторгнуть договор.</div>
+      <div class="risk-solution">→ Резерв на 3 месяца аренды. Переговоры о долгосрочном договоре. Поиск инвестора для покупки помещения.</div>
+    </div>
+    <div class="risk-card" style="border-left-color:var(--red)">
+      <div class="risk-level" style="color:var(--red)">🔴 Высокий риск</div>
+      <div class="risk-title">Недостаток заявок</div>
+      <div class="risk-body">Текущий темп 8–10 заявок в неделю не обеспечивает рост. Нет системной лидогенерации и менеджера продаж.</div>
+      <div class="risk-solution">→ Нанять менеджера. Запустить Яндекс Директ. Реферальная программа с увеличенной выплатой. TikTok контент.</div>
+    </div>
+    <div class="risk-card" style="border-left-color:#f0a060">
+      <div class="risk-level" style="color:#f0a060">🟠 Средний риск</div>
+      <div class="risk-title">Копирование позиционирования</div>
+      <div class="risk-body">«Ирбис» или «Русская речь» могут нанять психолога и скопировать подход. Первое место не гарантировано.</div>
+      <div class="risk-solution">→ Зарегистрировать товарный знак «Зигма Арт». Сертифицировать методику. Строить личный бренд педагога-психолога.</div>
+    </div>
+    <div class="risk-card" style="border-left-color:#f0a060">
+      <div class="risk-level" style="color:#f0a060">🟠 Средний риск</div>
+      <div class="risk-title">Негативный отзыв</div>
+      <div class="risk-body">Конфликт с родителем сложного ребёнка. Репутационный ущерб через родительские чаты — стремительное распространение.</div>
+      <div class="risk-solution">→ Внедрить протокол работы с конфликтами. Быстрое личное реагирование руководителя. Страхование профессиональной ответственности.</div>
+    </div>
+    <div class="risk-card" style="border-left-color:var(--accent4)">
+      <div class="risk-level" style="color:var(--accent4)">🟡 Низкий риск</div>
+      <div class="risk-title">Потеря ключевого педагога</div>
+      <div class="risk-body">Педагог-психолог с 14-летним опытом — критически важный ресурс. Уход создаёт репутационную и операционную дыру.</div>
+      <div class="risk-solution">→ Долгосрочный договор с условиями удержания. Документировать методику. Готовить второго специалиста внутри команды.</div>
+    </div>
+    <div class="risk-card" style="border-left-color:var(--accent4)">
+      <div class="risk-level" style="color:var(--accent4)">🟡 Низкий риск</div>
+      <div class="risk-title">Снижение платёжеспособности</div>
+      <div class="risk-body">Экономическая нестабильность может снизить готовность ЦА платить 11–12 тыс₽ в месяц за доп. образование.</div>
+      <div class="risk-solution">→ Разработать более доступный формат (мини-группы, 1-2 дисц.). B2B канал как страховка от B2C просадки.</div>
+    </div>
+  </div>
+
+  <div class="full-card">
+    <h3>Матрица рисков</h3>
+    <div style="position:relative;width:100%;height:280px;background:var(--bg);border-radius:8px;border:1px solid var(--border);overflow:hidden">
+      <div style="position:absolute;top:0;left:50%;right:0;bottom:50%;background:rgba(232,126,126,0.06);border-right:1px solid var(--border);border-bottom:1px solid var(--border)"></div>
+      <div style="position:absolute;top:50%;left:50%;right:0;bottom:0;background:rgba(232,201,126,0.06)"></div>
+      <div style="position:absolute;top:0;left:0;right:50%;bottom:50%;background:rgba(232,201,126,0.06)"></div>
+      <div style="position:absolute;top:50%;left:0;right:50%;bottom:0;background:rgba(126,232,160,0.06)"></div>
+      <!-- Labels -->
+      <div style="position:absolute;top:50%;left:4px;transform:translateY(-50%);font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:1px;writing-mode:vertical-lr;transform:rotate(180deg) translateY(50%)">Вероятность</div>
+      <div style="position:absolute;bottom:6px;left:50%;transform:translateX(-50%);font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:1px">Влияние на бизнес</div>
+      <!-- Points -->
+      <div style="position:absolute;left:78%;top:18%;width:10px;height:10px;background:var(--red);border-radius:50%;transform:translate(-50%,-50%)" title="Аренда"></div>
+      <div style="position:absolute;left:82%;top:22%;font-size:10px;color:var(--red)">Аренда</div>
+      <div style="position:absolute;left:65%;top:30%;width:10px;height:10px;background:var(--red);border-radius:50%;transform:translate(-50%,-50%)"></div>
+      <div style="position:absolute;left:67%;top:34%;font-size:10px;color:var(--red)">Заявки</div>
+      <div style="position:absolute;left:55%;top:48%;width:10px;height:10px;background:#f0a060;border-radius:50%;transform:translate(-50%,-50%)"></div>
+      <div style="position:absolute;left:57%;top:52%;font-size:10px;color:#f0a060">Копирование</div>
+      <div style="position:absolute;left:72%;top:58%;width:10px;height:10px;background:#f0a060;border-radius:50%;transform:translate(-50%,-50%)"></div>
+      <div style="position:absolute;left:74%;top:62%;font-size:10px;color:#f0a060">Отзыв</div>
+      <div style="position:absolute;left:38%;top:38%;width:10px;height:10px;background:var(--accent4);border-radius:50%;transform:translate(-50%,-50%)"></div>
+      <div style="position:absolute;left:17%;top:42%;font-size:10px;color:var(--accent4)">Потеря педагога</div>
+      <div style="position:absolute;left:42%;top:65%;width:10px;height:10px;background:var(--accent4);border-radius:50%;transform:translate(-50%,-50%)"></div>
+      <div style="position:absolute;left:20%;top:69%;font-size:10px;color:var(--accent4)">Платёжеспособность</div>
+    </div>
+  </div>
+</div>
+
+</div>
+
+<script>
+function switchTab(idx) {
+  document.querySelectorAll('.tab').forEach(function(t, i) {
+    t.classList.toggle('active', i === idx);
+  });
+  document.querySelectorAll('.tab-panel').forEach(function(p, i) {
+    p.classList.toggle('active', i === idx);
+  });
+  var tabs = document.querySelectorAll('.tab');
+  if (tabs[idx]) {
+    tabs[idx].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+  }
+  window.scrollTo({ top: document.querySelector('.tabs-container').offsetTop, behavior: 'smooth' });
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+  document.querySelectorAll('.tab').forEach(function(tab, idx) {
+    tab.removeAttribute('onclick');
+
+    var tapped = false;
+
+    tab.addEventListener('touchstart', function(e) {
+      tapped = true;
+    }, { passive: true });
+
+    tab.addEventListener('touchend', function(e) {
+      if (tapped) {
+        e.preventDefault();
+        tapped = false;
+        switchTab(idx);
+      }
+    }, { passive: false });
+
+    tab.addEventListener('click', function(e) {
+      if (!tapped) switchTab(idx);
+      tapped = false;
+    });
+  });
+});
+</script>
+
+</body>
+</html>
