@@ -1,0 +1,1768 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ZIGMA ART — Летний лагерь 2025 | Маркетинговый бриф</title>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0a0a0f;
+    --bg2: #111118;
+    --bg3: #16161f;
+    --bg4: #1c1c28;
+    --border: #2a2a3a;
+    --accent: #e8c97e;
+    --accent2: #c9a85c;
+    --accent-dim: rgba(232,201,126,0.12);
+    --accent-glow: rgba(232,201,126,0.25);
+    --text: #e8e8f0;
+    --text2: #9898b0;
+    --text3: #6060780;
+    --red: #e87e7e;
+    --green: #7ec9a0;
+    --blue: #7eaee8;
+    --purple: #b07ee8;
+    --font-body: 'IBM Plex Sans', sans-serif;
+    --font-display: 'Playfair Display', serif;
+    --radius: 12px;
+    --radius-sm: 8px;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font-body);
+    font-size: 15px;
+    line-height: 1.6;
+    min-height: 100vh;
+  }
+
+  /* HEADER */
+  .header {
+    background: linear-gradient(135deg, #0d0d18 0%, #141420 50%, #0f0f1a 100%);
+    border-bottom: 1px solid var(--border);
+    padding: 32px 24px 24px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .header::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse 60% 80% at 50% 0%, rgba(232,201,126,0.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .header-label {
+    font-family: var(--font-body);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 10px;
+    opacity: 0.8;
+  }
+  .header-title {
+    font-family: var(--font-display);
+    font-size: clamp(28px, 5vw, 48px);
+    font-weight: 900;
+    color: var(--text);
+    line-height: 1.1;
+    margin-bottom: 8px;
+  }
+  .header-title span { color: var(--accent); }
+  .header-sub {
+    font-size: 14px;
+    color: var(--text2);
+    margin-bottom: 16px;
+  }
+  .header-badges {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .badge {
+    background: var(--accent-dim);
+    border: 1px solid rgba(232,201,126,0.3);
+    color: var(--accent);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    padding: 4px 12px;
+    border-radius: 20px;
+  }
+
+  /* TABS */
+  .tabs-wrapper {
+    background: var(--bg2);
+    border-bottom: 1px solid var(--border);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  .tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 8px;
+  }
+  .tab {
+    flex: 1 1 auto;
+    min-height: 44px;
+    padding: 12px 16px;
+    background: none;
+    border: none;
+    border-bottom: 2px solid transparent;
+    color: var(--text2);
+    font-family: var(--font-body);
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: color 0.2s, border-color 0.2s, background 0.2s;
+    white-space: nowrap;
+    touch-action: manipulation;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .tab:hover { color: var(--text); background: rgba(255,255,255,0.03); }
+  .tab.active {
+    color: var(--accent);
+    border-bottom-color: var(--accent);
+    background: var(--accent-dim);
+  }
+
+  /* CONTENT */
+  .content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 32px 20px 80px;
+  }
+  .section { display: none; }
+  .section.active { display: block; }
+
+  /* SECTION HEADER */
+  .section-header {
+    margin-bottom: 32px;
+  }
+  .section-eyebrow {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 8px;
+  }
+  .section-title {
+    font-family: var(--font-display);
+    font-size: clamp(22px, 4vw, 34px);
+    font-weight: 700;
+    color: var(--text);
+    line-height: 1.2;
+  }
+  .section-desc {
+    margin-top: 10px;
+    color: var(--text2);
+    font-size: 14px;
+    max-width: 600px;
+  }
+
+  /* GRIDS */
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; }
+  .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+  .grid-auto { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; }
+
+  /* CARDS */
+  .card {
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 20px;
+    transition: border-color 0.2s;
+  }
+  .card:hover { border-color: rgba(232,201,126,0.3); }
+  .card-accent {
+    background: linear-gradient(135deg, #1a1a2a 0%, #16161f 100%);
+    border-color: rgba(232,201,126,0.25);
+  }
+  .card-title {
+    font-family: var(--font-display);
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--accent);
+    margin-bottom: 8px;
+  }
+  .card-label {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--text2);
+    margin-bottom: 6px;
+  }
+  .card-value {
+    font-family: var(--font-display);
+    font-size: 28px;
+    font-weight: 900;
+    color: var(--accent);
+    line-height: 1;
+  }
+  .card-sub {
+    font-size: 12px;
+    color: var(--text2);
+    margin-top: 4px;
+  }
+
+  /* STAT BLOCKS */
+  .stats-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    margin-bottom: 24px;
+  }
+  .stat-block {
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 16px;
+    text-align: center;
+  }
+  .stat-block .num {
+    font-family: var(--font-display);
+    font-size: 32px;
+    font-weight: 900;
+    color: var(--accent);
+    line-height: 1;
+    display: block;
+  }
+  .stat-block .lbl {
+    font-size: 11px;
+    color: var(--text2);
+    margin-top: 4px;
+    display: block;
+  }
+
+  /* LIST STYLES */
+  .list-fancy {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .list-fancy li {
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+    font-size: 14px;
+    color: var(--text2);
+    line-height: 1.5;
+  }
+  .list-fancy li::before {
+    content: '▸';
+    color: var(--accent);
+    flex-shrink: 0;
+    margin-top: 1px;
+    font-size: 12px;
+  }
+  .list-fancy li strong { color: var(--text); }
+
+  /* TAGS */
+  .tag {
+    display: inline-block;
+    background: var(--accent-dim);
+    border: 1px solid rgba(232,201,126,0.2);
+    color: var(--accent);
+    font-size: 11px;
+    font-weight: 500;
+    padding: 3px 10px;
+    border-radius: 20px;
+    margin: 2px;
+  }
+  .tag-red { background: rgba(232,126,126,0.1); border-color: rgba(232,126,126,0.25); color: var(--red); }
+  .tag-green { background: rgba(126,201,160,0.1); border-color: rgba(126,201,160,0.25); color: var(--green); }
+  .tag-blue { background: rgba(126,174,232,0.1); border-color: rgba(126,174,232,0.25); color: var(--blue); }
+
+  /* DIVIDER */
+  .divider {
+    height: 1px;
+    background: var(--border);
+    margin: 24px 0;
+  }
+
+  /* TABLE */
+  .table-wrap { overflow-x: auto; }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+  }
+  th {
+    background: var(--bg4);
+    color: var(--accent);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 10px 14px;
+    text-align: left;
+    border-bottom: 1px solid var(--border);
+    white-space: nowrap;
+  }
+  td {
+    padding: 10px 14px;
+    border-bottom: 1px solid rgba(42,42,58,0.5);
+    color: var(--text2);
+    vertical-align: top;
+  }
+  td strong { color: var(--text); }
+  tr:hover td { background: rgba(255,255,255,0.02); }
+  .td-accent { color: var(--accent); font-weight: 600; }
+  .td-red { color: var(--red); }
+  .td-green { color: var(--green); }
+
+  /* TIMELINE */
+  .timeline {
+    position: relative;
+    padding-left: 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 8px; top: 8px; bottom: 8px;
+    width: 2px;
+    background: linear-gradient(to bottom, var(--accent), transparent);
+  }
+  .timeline-item {
+    position: relative;
+  }
+  .timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -24px; top: 5px;
+    width: 10px; height: 10px;
+    border-radius: 50%;
+    background: var(--accent);
+    box-shadow: 0 0 8px var(--accent-glow);
+  }
+  .timeline-day {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 2px;
+  }
+  .timeline-title {
+    font-family: var(--font-display);
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 4px;
+  }
+  .timeline-desc {
+    font-size: 13px;
+    color: var(--text2);
+  }
+
+  /* BAR CHART */
+  .bar-chart { display: flex; flex-direction: column; gap: 10px; }
+  .bar-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .bar-label {
+    font-size: 12px;
+    color: var(--text2);
+    width: 140px;
+    flex-shrink: 0;
+    text-align: right;
+  }
+  .bar-track {
+    flex: 1;
+    height: 20px;
+    background: var(--bg4);
+    border-radius: 4px;
+    overflow: hidden;
+  }
+  .bar-fill {
+    height: 100%;
+    border-radius: 4px;
+    transition: width 1s ease;
+    background: linear-gradient(90deg, var(--accent2), var(--accent));
+  }
+  .bar-fill-blue { background: linear-gradient(90deg, #4a80c0, var(--blue)); }
+  .bar-fill-red { background: linear-gradient(90deg, #c04a4a, var(--red)); }
+  .bar-fill-green { background: linear-gradient(90deg, #4a9070, var(--green)); }
+  .bar-val {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--accent);
+    width: 60px;
+    flex-shrink: 0;
+  }
+
+  /* PERSON CARD */
+  .person-card {
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 20px;
+    transition: border-color 0.2s, transform 0.2s;
+  }
+  .person-card:hover {
+    border-color: rgba(232,201,126,0.35);
+    transform: translateY(-2px);
+  }
+  .person-icon {
+    width: 48px; height: 48px;
+    border-radius: 50%;
+    background: var(--accent-dim);
+    border: 2px solid rgba(232,201,126,0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    margin-bottom: 12px;
+  }
+  .person-name {
+    font-family: var(--font-display);
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 2px;
+  }
+  .person-role {
+    font-size: 11px;
+    color: var(--accent);
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+
+  /* FEAR TABLE */
+  .fear-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 12px;
+  }
+  .fear-left {
+    background: rgba(232,126,126,0.06);
+    border: 1px solid rgba(232,126,126,0.2);
+    border-radius: var(--radius-sm);
+    padding: 14px;
+  }
+  .fear-right {
+    background: rgba(126,201,160,0.06);
+    border: 1px solid rgba(126,201,160,0.2);
+    border-radius: var(--radius-sm);
+    padding: 14px;
+  }
+  .fear-icon { font-size: 18px; margin-bottom: 6px; }
+  .fear-head { font-size: 12px; font-weight: 600; color: var(--text); margin-bottom: 4px; }
+  .fear-text { font-size: 12px; color: var(--text2); line-height: 1.5; }
+
+  /* PIE CHART (SVG) */
+  .pie-wrap {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+  .pie-legend {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    color: var(--text2);
+  }
+  .legend-dot {
+    width: 10px; height: 10px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  /* RADAR CHART (SVG) */
+  .radar-wrap {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 24px;
+    align-items: flex-start;
+  }
+
+  /* PRICE BLOCK */
+  .price-card {
+    background: linear-gradient(135deg, #1a1a2a 0%, #111118 100%);
+    border: 1px solid rgba(232,201,126,0.3);
+    border-radius: var(--radius);
+    padding: 24px;
+    text-align: center;
+  }
+  .price-main {
+    font-family: var(--font-display);
+    font-size: 48px;
+    font-weight: 900;
+    color: var(--accent);
+    line-height: 1;
+  }
+  .price-label { font-size: 12px; color: var(--text2); margin-top: 4px; }
+  .price-discount {
+    display: inline-block;
+    background: rgba(126,201,160,0.15);
+    border: 1px solid rgba(126,201,160,0.3);
+    color: var(--green);
+    font-size: 12px;
+    font-weight: 600;
+    padding: 4px 12px;
+    border-radius: 20px;
+    margin-top: 8px;
+  }
+
+  /* PROGRAM MODULE */
+  .program-module {
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+    margin-bottom: 16px;
+  }
+  .program-header {
+    background: var(--bg4);
+    padding: 14px 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    cursor: pointer;
+    user-select: none;
+    transition: background 0.2s;
+  }
+  .program-header:hover { background: rgba(232,201,126,0.06); }
+  .program-num {
+    width: 32px; height: 32px;
+    border-radius: 50%;
+    background: var(--accent-dim);
+    border: 1px solid rgba(232,201,126,0.3);
+    display: flex; align-items: center; justify-content: center;
+    font-family: var(--font-display);
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--accent);
+    flex-shrink: 0;
+  }
+  .program-name {
+    font-family: var(--font-display);
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--text);
+    flex: 1;
+  }
+  .program-toggle {
+    color: var(--text2);
+    font-size: 18px;
+    transition: transform 0.2s;
+  }
+  .program-body {
+    padding: 20px;
+    display: none;
+  }
+  .program-body.open { display: block; }
+
+  /* INCLUDES LIST */
+  .includes-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+  .include-item {
+    display: flex;
+    gap: 8px;
+    align-items: flex-start;
+    background: var(--bg4);
+    border-radius: var(--radius-sm);
+    padding: 10px 12px;
+    font-size: 13px;
+    color: var(--text2);
+  }
+  .include-item .ico { flex-shrink: 0; font-size: 16px; }
+  .include-item strong { color: var(--text); display: block; font-size: 12px; margin-bottom: 2px; }
+
+  /* HIGHLIGHT BOX */
+  .highlight {
+    background: var(--accent-dim);
+    border: 1px solid rgba(232,201,126,0.25);
+    border-left: 3px solid var(--accent);
+    border-radius: var(--radius-sm);
+    padding: 14px 16px;
+    font-size: 13px;
+    color: var(--text2);
+    margin: 12px 0;
+  }
+  .highlight strong { color: var(--accent); }
+
+  /* FUNNEL */
+  .funnel { display: flex; flex-direction: column; gap: 4px; align-items: center; }
+  .funnel-step {
+    background: var(--bg4);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 12px 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    transition: border-color 0.2s;
+    width: 100%;
+    max-width: 520px;
+  }
+  .funnel-step:hover { border-color: rgba(232,201,126,0.3); }
+  .funnel-n {
+    width: 28px; height: 28px;
+    border-radius: 50%;
+    background: var(--accent-dim);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--accent);
+    flex-shrink: 0;
+  }
+  .funnel-text { flex: 1; }
+  .funnel-title { font-size: 13px; font-weight: 600; color: var(--text); }
+  .funnel-desc { font-size: 11px; color: var(--text2); }
+  .funnel-arrow { color: var(--accent); opacity: 0.5; font-size: 18px; text-align: center; }
+
+  /* COMPETITOR TABLE */
+  .comp-badge-yes { color: var(--green); font-weight: 600; }
+  .comp-badge-no { color: var(--red); font-weight: 600; }
+  .comp-badge-part { color: var(--accent); font-weight: 600; }
+  .comp-us { background: rgba(232,201,126,0.04); }
+
+  /* SECTION SPACING */
+  .mb-24 { margin-bottom: 24px; }
+  .mb-16 { margin-bottom: 16px; }
+  .mt-24 { margin-top: 24px; }
+
+  /* MOBILE */
+  @media (max-width: 600px) {
+    .grid-2, .grid-3, .grid-4, .grid-auto { grid-template-columns: 1fr; }
+    .stats-row { grid-template-columns: 1fr 1fr; }
+    .fear-row { grid-template-columns: 1fr; }
+    .includes-grid { grid-template-columns: 1fr; }
+    .bar-label { width: 90px; font-size: 11px; }
+    .tabs { padding: 0 4px; }
+    .tab { font-size: 10px; padding: 10px 8px; flex: 0 0 auto; }
+    .pie-wrap { flex-direction: column; align-items: flex-start; }
+    .content { padding: 20px 14px 60px; }
+    .price-main { font-size: 36px; }
+    .person-card, .card { padding: 14px; }
+  }
+  @media (min-width: 601px) and (max-width: 900px) {
+    .grid-3, .grid-4 { grid-template-columns: 1fr 1fr; }
+    .stats-row { grid-template-columns: repeat(2, 1fr); }
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-label">Маркетинговый бриф · Команда</div>
+  <div class="header-title">ZIGMA <span>ART</span></div>
+  <div style="font-family:'Playfair Display',serif;font-size:18px;color:var(--text2);font-style:italic;margin-bottom:10px;">Летний театральный лагерь 2025</div>
+  <div class="header-sub">Дата брифа: 04.03.2025 · Версия для маркетинговой команды</div>
+  <div class="header-badges">
+    <span class="badge">14 дней на море</span>
+    <span class="badge">2 смены</span>
+    <span class="badge">100 мест</span>
+    <span class="badge">10–16 лет</span>
+    <span class="badge">Шепси, Краснодарский край</span>
+  </div>
+</div>
+
+<div class="tabs-wrapper">
+  <div class="tabs" id="tabsContainer">
+    <button class="tab active" data-tab="overview" ontouchstart="" ontouchend="handleTab(event,'overview')">📊 Обзор</button>
+    <button class="tab" data-tab="product" ontouchstart="" ontouchend="handleTab(event,'product')">🎭 Продукт</button>
+    <button class="tab" data-tab="program" ontouchstart="" ontouchend="handleTab(event,'program')">📋 Программа</button>
+    <button class="tab" data-tab="team" ontouchstart="" ontouchend="handleTab(event,'team')">👥 Команда</button>
+    <button class="tab" data-tab="audience" ontouchstart="" ontouchend="handleTab(event,'audience')">🎯 Аудитория</button>
+    <button class="tab" data-tab="competitors" ontouchstart="" ontouchend="handleTab(event,'competitors')">⚔️ Конкуренты</button>
+    <button class="tab" data-tab="sales" ontouchstart="" ontouchend="handleTab(event,'sales')">💰 Продажи</button>
+    <button class="tab" data-tab="marketing" ontouchstart="" ontouchend="handleTab(event,'marketing')">🚀 Маркетинг</button>
+  </div>
+</div>
+
+<div class="content">
+
+  <!-- ===== OVERVIEW ===== -->
+  <div class="section active" id="tab-overview">
+    <div class="section-header">
+      <div class="section-eyebrow">Общий обзор</div>
+      <div class="section-title">Летний лагерь — ключевые факты</div>
+      <div class="section-desc">Всё самое важное на одном экране для быстрого погружения в проект</div>
+    </div>
+
+    <div class="stats-row mb-24">
+      <div class="stat-block">
+        <span class="num">100</span>
+        <span class="lbl">Мест (цель)</span>
+      </div>
+      <div class="stat-block">
+        <span class="num">~10</span>
+        <span class="lbl">Продано сейчас</span>
+      </div>
+      <div class="stat-block">
+        <span class="num">120к</span>
+        <span class="lbl">Цена путёвки, руб.</span>
+      </div>
+      <div class="stat-block">
+        <span class="num">14</span>
+        <span class="lbl">Дней смены</span>
+      </div>
+    </div>
+
+    <div class="grid-2 mb-24">
+      <div class="card card-accent">
+        <div class="card-label">Ключевая формулировка продукта</div>
+        <div style="font-family:'Playfair Display',serif;font-size:18px;font-weight:700;color:var(--text);line-height:1.3;margin-top:4px;">«Полгода занятий в театральной студии — за 14 дней интенсива у моря»</div>
+        <div style="font-size:12px;color:var(--text2);margin-top:10px;">Не просто лагерь. Выездной формат студии Zigma Art с теми же педагогами и методологией.</div>
+      </div>
+      <div class="card">
+        <div class="card-label">Даты и смены</div>
+        <div style="margin-top:8px;display:flex;flex-direction:column;gap:10px;">
+          <div style="display:flex;align-items:center;gap:10px;background:var(--bg4);padding:10px 14px;border-radius:8px;">
+            <span style="font-size:20px;">☀️</span>
+            <div>
+              <div style="font-size:12px;font-weight:700;color:var(--accent);">1-я смена</div>
+              <div style="font-size:14px;color:var(--text);">15–28 июня 2025</div>
+            </div>
+          </div>
+          <div style="display:flex;align-items:center;gap:10px;background:var(--bg4);padding:10px 14px;border-radius:8px;">
+            <span style="font-size:20px;">🌊</span>
+            <div>
+              <div style="font-size:12px;font-weight:700;color:var(--accent);">2-я смена</div>
+              <div style="font-size:14px;color:var(--text);">1–14 июля 2025</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid-3 mb-24">
+      <div class="card">
+        <div class="card-title">📍 Локация</div>
+        <ul class="list-fancy">
+          <li><strong>АО Пансионат Шепси</strong>, Туапсинский р-н, Краснодарский край</li>
+          <li>Государственная площадка, все ГОСТы и СанПиНы</li>
+          <li>Видеоохрана, закрытый периметр, пропускная система</li>
+          <li>Медкомплекс — отдельный этаж</li>
+          <li>Свой пляж, 5 залов разной площади</li>
+          <li>Лес прямо на территории, горы, сосновый воздух</li>
+          <li>5–10 мин до моря (лестница вниз)</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="card-title">👶 Формат</div>
+        <ul class="list-fancy">
+          <li>До <strong>50 детей</strong> на смену — камерный формат</li>
+          <li><strong>3 отряда</strong> по 16–17 человек</li>
+          <li>Возраст: <strong>10–16 лет</strong> (свои от 9)</li>
+          <li>1 взрослый на 3–4 детей (реально)</li>
+          <li>2 вожатых на отряд + педагог + администратор + операционный директор</li>
+          <li>Выход в море — только утро/вечер (не в пик солнца)</li>
+          <li>Телефон — 30 мин в день</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="card-title">🎯 Итого за 14 дней</div>
+        <ul class="list-fancy">
+          <li><strong>7–9 итоговых форматов</strong>: этюды, наблюдения, спектакль, короткометражка, самопрезентация, дикционный номер, танец</li>
+          <li>Опыт по системе <strong>Щукинского института</strong></li>
+          <li>2 выхода в море ежедневно (~3 часа)</li>
+          <li>3 часа творческих занятий в день</li>
+          <li>Вечерняя программа ежедневно</li>
+          <li>Свечка в кругу — рефлексия дня</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Mini Sales Chart -->
+    <div class="card mb-24">
+      <div class="card-title">📈 Статус продаж на 04.03.2025</div>
+      <div style="margin-top:16px;">
+        <div class="bar-chart">
+          <div class="bar-row">
+            <div class="bar-label">Продано</div>
+            <div class="bar-track"><div class="bar-fill bar-fill-green" style="width:10%"></div></div>
+            <div class="bar-val td-green">~10 мест</div>
+          </div>
+          <div class="bar-row">
+            <div class="bar-label">Осталось</div>
+            <div class="bar-track"><div class="bar-fill bar-fill-red" style="width:90%"></div></div>
+            <div class="bar-val td-red">~90 мест</div>
+          </div>
+          <div class="bar-row">
+            <div class="bar-label">Цель (2 смены)</div>
+            <div class="bar-track"><div class="bar-fill" style="width:100%"></div></div>
+            <div class="bar-val">100 мест</div>
+          </div>
+        </div>
+      </div>
+      <div class="highlight" style="margin-top:16px;"><strong>Приоритет:</strong> сначала прогреть тёплую базу студии (действующие ученики + бывшие клиенты + те, кто интересовался), затем холодный трафик через Telegram.</div>
+    </div>
+
+    <!-- Quick UTP -->
+    <div class="card card-accent">
+      <div class="card-label">УТП vs конкуренты (кратко)</div>
+      <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:10px;">
+        <span class="tag">Море + авторская программа вместе</span>
+        <span class="tag">Команда федерального уровня</span>
+        <span class="tag">Щукинская методология</span>
+        <span class="tag">7–9 итоговых форматов</span>
+        <span class="tag">Камерный формат (50 чел.)</span>
+        <span class="tag">Гос. площадка с медкомплексом</span>
+        <span class="tag">Педагоги студии (не сезонные)</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== PRODUCT ===== -->
+  <div class="section" id="tab-product">
+    <div class="section-header">
+      <div class="section-eyebrow">Продукт</div>
+      <div class="section-title">Что продаём. Полная разбивка.</div>
+    </div>
+
+    <div class="grid-3 mb-24">
+      <div class="price-card">
+        <div class="card-label">Базовая цена</div>
+        <div class="price-main">120 000</div>
+        <div class="price-label">руб. за путёвку</div>
+        <div style="margin-top:8px;font-size:12px;color:var(--text2);">Оплата: 50% предоплата + остаток в середине апреля</div>
+      </div>
+      <div class="price-card">
+        <div class="card-label">Скидка 10% (до ≈15 апреля)</div>
+        <div class="price-main">108 000</div>
+        <div class="price-label">руб. при 100% оплате</div>
+        <div class="price-discount">Экономия 12 000 ₽</div>
+      </div>
+      <div class="price-card" style="border-color:rgba(126,174,232,0.3);">
+        <div class="card-label">Трансфер (отдельно)</div>
+        <div class="price-main" style="color:var(--blue);">~20 000</div>
+        <div class="price-label">руб. (поезд, с питанием)</div>
+        <div style="margin-top:8px;font-size:12px;color:var(--text2);">Подрядчик с 8+ лет опыта, прямые договоры с РЖД, вагонами. Родители могут привезти сами.</div>
+      </div>
+    </div>
+
+    <div class="mb-24">
+      <div class="card-title" style="margin-bottom:14px;font-family:'Playfair Display',serif;font-size:20px;color:var(--text);">✅ Что входит в стоимость</div>
+      <div class="includes-grid">
+        <div class="include-item"><span class="ico">🏨</span><div><strong>Проживание 14 дней</strong>3–4-местные номера, строго по возрастам</div></div>
+        <div class="include-item"><span class="ico">🍽️</span><div><strong>5-разовое питание</strong>Завтрак, обед, полдник, ужин + доп. приём</div></div>
+        <div class="include-item"><span class="ico">🎭</span><div><strong>Вся творческая программа</strong>Актёрское мастерство, речь, танец (3 часа/день)</div></div>
+        <div class="include-item"><span class="ico">👩‍🏫</span><div><strong>Сопровождение 24/7</strong>Вожатые, педагоги, операционный директор</div></div>
+        <div class="include-item"><span class="ico">🎪</span><div><strong>Вечерние мероприятия</strong>Дискотеки, квесты, конкурсы, эстафеты, показы</div></div>
+        <div class="include-item"><span class="ico">🏆</span><div><strong>Финальный праздник</strong>«Мой шаг вперёд» — 14-й день, 7–9 номеров</div></div>
+        <div class="include-item"><span class="ico">📹</span><div><strong>Фото и видеоотчёт</strong>Съёмка всей смены, личный архив</div></div>
+        <div class="include-item"><span class="ico">🎬</span><div><strong>Видео-самопрезентация</strong>1 мин на камеру, каждый ребёнок</div></div>
+        <div class="include-item"><span class="ico">🎥</span><div><strong>Короткометражка</strong>1 тематический день: сценарий → съёмка</div></div>
+        <div class="include-item"><span class="ico">👕</span><div><strong>Мерч</strong>Футболка, бейсболка, платок (за счёт студии)</div></div>
+        <div class="include-item"><span class="ico">🔥</span><div><strong>Свечка в кругу</strong>Ежедневная рефлексия, командный контакт</div></div>
+        <div class="include-item"><span class="ico">🚌</span><div><strong>1 экскурсия</strong>За 14 дней, организованно</div></div>
+      </div>
+    </div>
+
+    <div class="grid-2 mb-24">
+      <div class="card">
+        <div class="card-title">❌ Не входит в стоимость</div>
+        <ul class="list-fancy" style="margin-top:8px;">
+          <li><strong>Трансфер</strong> — ~20 000 руб. отдельно (опционально)</li>
+          <li><strong>Карманные расходы</strong> ребёнка</li>
+          <li><strong>Медицинская страховка</strong> (рекомендуется)</li>
+          <li><strong>Курортный сбор</strong> (при необходимости)</li>
+        </ul>
+        <div class="divider"></div>
+        <div style="font-size:11px;color:var(--text2);"><strong style="color:var(--red);">Запрещено брать:</strong> чипсы, жвачка, любая «запрещёнка» — строго из соображений здоровья.</div>
+      </div>
+      <div class="card">
+        <div class="card-title">🔐 Безопасность — факты</div>
+        <ul class="list-fancy" style="margin-top:8px;">
+          <li>Государственная площадка, все лицензии и разрешения</li>
+          <li><strong>Видеоохрана</strong>, закрытый периметр, пропускная система</li>
+          <li>Медкомплекс — отдельный этаж на территории</li>
+          <li>Педиатр + медпункт прямо на пляже</li>
+          <li><strong>Спасатель на воде</strong>, буйки, 2 взрослых в воде обязательно</li>
+          <li>Ночные дежурные вожатые</li>
+          <li>Ежедневная связь родителей — 12:00, 30 мин</li>
+          <li>Фото/видео в общий чат ежедневно</li>
+          <li>При ЧП — немедленное уведомление + согласование</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">📄 Договор — ключевые условия</div>
+      <div class="table-wrap" style="margin-top:12px;">
+        <table>
+          <tr><th>Ситуация</th><th>Условие</th></tr>
+          <tr><td><strong>Отказ за 30+ дней до смены</strong></td><td>Орг. сбор 15 000 руб. + 20% от суммы</td></tr>
+          <tr><td><strong>Отказ менее чем за 3 дня</strong></td><td class="td-red">100% удержание, возврат не производится</td></tr>
+          <tr><td><strong>Отчисление (нарушения)</strong></td><td>Возврат только за неиспользованные дни проживания/питания. Орг. сбор и педагогические услуги не возвращаются</td></tr>
+          <tr><td><strong>Форс-мажор</strong></td><td class="td-green">Индивидуальное решение</td></tr>
+          <tr><td><strong>Ответственность за трансфер</strong></td><td>С момента подписания акта приёма-передачи на территории пансионата</td></tr>
+          <tr><td><strong>Инфраструктура</strong></td><td>Ответственность несёт АО Пансионат Шепси</td></tr>
+          <tr><td><strong>Госпитализация</strong></td><td>Немедленное уведомление, родители прибывают и принимают решения самостоятельно</td></tr>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== PROGRAM ===== -->
+  <div class="section" id="tab-program">
+    <div class="section-header">
+      <div class="section-eyebrow">Программа</div>
+      <div class="section-title">Что делают дети 14 дней</div>
+    </div>
+
+    <!-- Day schedule -->
+    <div class="card mb-24">
+      <div class="card-title">⏰ Типичный день в лагере</div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:8px;margin-top:14px;">
+        <div style="background:var(--bg4);padding:10px 14px;border-radius:8px;"><span style="color:var(--accent);font-weight:700;">08:00</span><div style="font-size:13px;margin-top:2px;">Подъём</div></div>
+        <div style="background:var(--bg4);padding:10px 14px;border-radius:8px;"><span style="color:var(--accent);font-weight:700;">08:30</span><div style="font-size:13px;margin-top:2px;">Зарядка и активация</div></div>
+        <div style="background:var(--bg4);padding:10px 14px;border-radius:8px;"><span style="color:var(--accent);font-weight:700;">09:00</span><div style="font-size:13px;margin-top:2px;">Завтрак</div></div>
+        <div style="background:var(--bg4);padding:10px 14px;border-radius:8px;border-left:2px solid var(--blue);"><span style="color:var(--blue);font-weight:700;">09:30–11:30</span><div style="font-size:13px;margin-top:2px;">🏖️ Море, пляж, командные игры</div></div>
+        <div style="background:var(--bg4);padding:10px 14px;border-radius:8px;"><span style="color:var(--accent);font-weight:700;">12:00</span><div style="font-size:13px;margin-top:2px;">📱 Связь с родителями (30 мин)</div></div>
+        <div style="background:var(--bg4);padding:10px 14px;border-radius:8px;"><span style="color:var(--accent);font-weight:700;">12:30</span><div style="font-size:13px;margin-top:2px;">Обед</div></div>
+        <div style="background:var(--bg4);padding:10px 14px;border-radius:8px;border-left:2px solid var(--accent);"><span style="color:var(--accent);font-weight:700;">13:00–16:00</span><div style="font-size:13px;margin-top:2px;">🎭 Творческие занятия</div></div>
+        <div style="background:var(--bg4);padding:10px 14px;border-radius:8px;"><span style="color:var(--accent);font-weight:700;">16:00</span><div style="font-size:13px;margin-top:2px;">Полдник</div></div>
+        <div style="background:var(--bg4);padding:10px 14px;border-radius:8px;border-left:2px solid var(--blue);"><span style="color:var(--blue);font-weight:700;">16:30–18:00</span><div style="font-size:13px;margin-top:2px;">🏖️ Море, пляж</div></div>
+        <div style="background:var(--bg4);padding:10px 14px;border-radius:8px;"><span style="color:var(--accent);font-weight:700;">18:30</span><div style="font-size:13px;margin-top:2px;">Игры и активности</div></div>
+        <div style="background:var(--bg4);padding:10px 14px;border-radius:8px;"><span style="color:var(--accent);font-weight:700;">19:30</span><div style="font-size:13px;margin-top:2px;">🎪 Вечерняя программа</div></div>
+        <div style="background:var(--bg4);padding:10px 14px;border-radius:8px;"><span style="color:var(--accent);font-weight:700;">21:00</span><div style="font-size:13px;margin-top:2px;">🔥 Свечка в кругу</div></div>
+        <div style="background:var(--bg4);padding:10px 14px;border-radius:8px;"><span style="color:var(--accent);font-weight:700;">22:00</span><div style="font-size:13px;margin-top:2px;">💤 Сон</div></div>
+      </div>
+      <div class="highlight"><strong>Море дважды в день</strong> — ~3 часа суммарно. Выход в воду строго утром и вечером: пик солнца (11:30–16:30) дети в тени или залах.</div>
+    </div>
+
+    <!-- 3 Modules -->
+    <div class="mb-24">
+      <div class="program-module">
+        <div class="program-header" onclick="toggleProgram(this)">
+          <div class="program-num">1</div>
+          <div class="program-name">Актёрское мастерство</div>
+          <div style="font-size:11px;color:var(--text2);margin-right:8px;">По системе Щукинского института</div>
+          <div class="program-toggle">▾</div>
+        </div>
+        <div class="program-body">
+          <div class="grid-2">
+            <div>
+              <div style="font-size:11px;font-weight:700;letter-spacing:1.5px;color:var(--accent);text-transform:uppercase;margin-bottom:8px;">Что делают</div>
+              <ul class="list-fancy">
+                <li>Групповые этюды, упражнения, тренинги</li>
+                <li>Партнёрское взаимодействие</li>
+                <li>Работа с вниманием и реакцией</li>
+                <li>Практика выхода к аудитории</li>
+                <li>Подготовка показов за 3+1 дня (3 тренинга → показ)</li>
+              </ul>
+            </div>
+            <div>
+              <div style="font-size:11px;font-weight:700;letter-spacing:1.5px;color:var(--accent);text-transform:uppercase;margin-bottom:8px;">4–5 итоговых форматов</div>
+              <ul class="list-fancy">
+                <li><strong>День 4</strong> — этюдный показ (парные, индивидуальные, групповые сценки из жизни)</li>
+                <li><strong>День 8</strong> — актёрские наблюдения (изображают кого-то из реальной жизни: педагога, друга, родителя)</li>
+                <li><strong>День 12–13</strong> — итоговый спектакль (весь отряд, распределение ролей, может быть сочинён прямо в лагере)</li>
+                <li><strong>+</strong> Короткометражка (1 полный день: сценарий → съёмка на телефон)</li>
+                <li><strong>+</strong> Видео-самопрезентация (1 мин на камеру, каждый)</li>
+              </ul>
+            </div>
+          </div>
+          <div class="highlight"><strong>Уникальность:</strong> единственный день, когда телефон используется по назначению — во время съёмки короткометражки.</div>
+        </div>
+      </div>
+      <div class="program-module">
+        <div class="program-header" onclick="toggleProgram(this)">
+          <div class="program-num">2</div>
+          <div class="program-name">Речь</div>
+          <div style="font-size:11px;color:var(--text2);margin-right:8px;">Голос, дикция, структура</div>
+          <div class="program-toggle">▾</div>
+        </div>
+        <div class="program-body">
+          <div class="grid-2">
+            <div>
+              <div style="font-size:11px;font-weight:700;letter-spacing:1.5px;color:var(--accent);text-transform:uppercase;margin-bottom:8px;">Что делают</div>
+              <ul class="list-fancy">
+                <li>Упражнения на дикцию</li>
+                <li>Работа с дыханием</li>
+                <li>Развитие громкости и ясности звучания</li>
+                <li>Практика структурированной подачи мысли (логика, последовательность)</li>
+                <li>Индивидуальная работа со скороговорками и чистоговорками</li>
+              </ul>
+            </div>
+            <div>
+              <div style="font-size:11px;font-weight:700;letter-spacing:1.5px;color:var(--accent);text-transform:uppercase;margin-bottom:8px;">3 итоговых формата</div>
+              <ul class="list-fancy">
+                <li><strong>Индивидуальная скороговорка на видео</strong> — учат 14 дней, записывают финально</li>
+                <li><strong>Коллективный дикционный номер</strong> — все вместе, синхронно, красиво</li>
+                <li><strong>Темпоритмическая речевая композиция</strong> — с разными темпами и звуками, командный формат</li>
+              </ul>
+              <div style="margin-top:12px;">
+                <div style="font-size:11px;font-weight:700;letter-spacing:1.5px;color:var(--green);text-transform:uppercase;margin-bottom:6px;">Результат</div>
+                <div style="font-size:13px;color:var(--text2);">Речь чётче, громче, понятнее. Ребёнку проще формулировать мысли без спешки и зажимов.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="program-module">
+        <div class="program-header" onclick="toggleProgram(this)">
+          <div class="program-num">3</div>
+          <div class="program-name">Танец и сценическое движение</div>
+          <div style="font-size:11px;color:var(--text2);margin-right:8px;">Тело, ритм, свобода</div>
+          <div class="program-toggle">▾</div>
+        </div>
+        <div class="program-body">
+          <div class="grid-2">
+            <div>
+              <div style="font-size:11px;font-weight:700;letter-spacing:1.5px;color:var(--accent);text-transform:uppercase;margin-bottom:8px;">Что делают</div>
+              <ul class="list-fancy">
+                <li>Координация и пластика</li>
+                <li>Работа с телесной свободой</li>
+                <li>Импровизация в движении</li>
+                <li>Активные телесные форматы</li>
+              </ul>
+            </div>
+            <div>
+              <div style="font-size:11px;font-weight:700;letter-spacing:1.5px;color:var(--accent);text-transform:uppercase;margin-bottom:8px;">2 итоговых формата</div>
+              <ul class="list-fancy">
+                <li><strong>Координационный номер</strong> — синхронное движение отряда с задержкой на 1 шаг. Эффектно и наглядно</li>
+                <li><strong>Коллективный отрядный танец</strong></li>
+              </ul>
+              <div style="margin-top:12px;">
+                <div style="font-size:11px;font-weight:700;letter-spacing:1.5px;color:var(--green);text-transform:uppercase;margin-bottom:6px;">Результат</div>
+                <div style="font-size:13px;color:var(--text2);">Свободное тело, чувство ритма, уверенность в движении, устойчивость в команде.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Structure of 14 days -->
+    <div class="grid-2 mb-24">
+      <div class="card">
+        <div class="card-title">📅 Структура 14 дней</div>
+        <div class="timeline" style="margin-top:14px;">
+          <div class="timeline-item">
+            <div class="timeline-day">Дни 1–5</div>
+            <div class="timeline-title">Знакомство</div>
+            <div class="timeline-desc">Игры на контакт, лёгкий формат. Появляется ощущение «я часть группы».</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-day">Дни 6–10</div>
+            <div class="timeline-title">Команда и активный рост</div>
+            <div class="timeline-desc">Совместные проекты, первые этюды, экскурсия. Ребята начинают поддерживать друг друга. Появляется уверенность в общении.</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-day">Дни 11–13</div>
+            <div class="timeline-title">Подготовка финала</div>
+            <div class="timeline-desc">Сборка номеров, репетиции, распределение ролей. Каждый понимает свою роль в общем результате.</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-day">День 14</div>
+            <div class="timeline-title">🏆 Финальный праздник</div>
+            <div class="timeline-desc">«Мой шаг вперёд» — 7–9 номеров, сертификаты, фото/видео. Ощущение: «я смог, меня поддержали, я справился».</div>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-title">🎪 Вечерние события (примеры)</div>
+        <div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:10px;">
+          <span class="tag">🕺 Дискотека</span>
+          <span class="tag">🔍 Квесты</span>
+          <span class="tag">👑 Мистер/Мисс лагерь</span>
+          <span class="tag">🎤 Караоке</span>
+          <span class="tag">🏃 Эстафеты</span>
+          <span class="tag">🏰 Командная оборона</span>
+          <span class="tag">🎭 Показы этюдов</span>
+          <span class="tag">🌟 Конкурсы талантов</span>
+          <span class="tag">🔥 Свечка в кругу</span>
+        </div>
+        <div class="divider"></div>
+        <div class="card-title">📦 Что ребёнок увозит домой</div>
+        <ul class="list-fancy" style="margin-top:8px;">
+          <li>Видео-самопрезентация (1 мин, проф. съёмка)</li>
+          <li>Видео индивидуальной скороговорки</li>
+          <li>Участие в короткометражке</li>
+          <li>Фото/видео всех показов</li>
+          <li>Сертификат участника</li>
+          <li>Мерч (футболка, бейсболка, платок)</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== TEAM ===== -->
+  <div class="section" id="tab-team">
+    <div class="section-header">
+      <div class="section-eyebrow">Команда</div>
+      <div class="section-title">Люди, которым доверяют детей</div>
+      <div class="section-desc">Главный аргумент доверия — не локация и не цена, а команда. Для холодной аудитории это решающий фактор.</div>
+    </div>
+
+    <div class="grid-2 mb-24">
+      <div class="person-card">
+        <div class="person-icon">🎬</div>
+        <div class="person-name">Максим Зигизмунд</div>
+        <div class="person-role">Основатель · Актёрское мастерство</div>
+        <ul class="list-fancy">
+          <li>Актёр театра и кино, режиссёр, педагог</li>
+          <li>Лауреат международных театральных фестивалей России и Европы</li>
+          <li><strong>Победитель конкурса «Лица района» Москвы 2024</strong> (категория «Культура и искусство», при поддержке Правительства Москвы, 78 участников)</li>
+          <li>3 000+ учеников за карьеру, ~20 выпускников Щукина, ГИТИСа, ВГИКа, ИТИ, ЯГТИ, НГТУ</li>
+          <li><strong>14 лет педагогического опыта</strong>, 270 учеников единовременно (13 групп)</li>
+          <li>40+ собственных постановок, 15+ главных ролей</li>
+          <li>Мастер-классы по всей стране</li>
+          <li>Отец — его сын учится в студии</li>
+        </ul>
+        <div class="highlight"><strong>Для маркетинга:</strong> единственный педагог в Москве, который одновременно преподавал 270 детям. Реальная победа в городском конкурсе — социальное доказательство.</div>
+      </div>
+      <div class="person-card">
+        <div class="person-icon">⭐</div>
+        <div class="person-name">Любовь Ершова</div>
+        <div class="person-role">Операционный директор</div>
+        <ul class="list-fancy">
+          <li><strong>«Дед Мороз приходит в дом»</strong> — её идея и проект. 89 регионов, 10 000+ волонтёров, 50 000+ детей. Площадки: Морозовская больница, центр Рошаля, госпиталь Бурденко, детские дома. 12–13 лет проекту</li>
+          <li><strong>«ЁлкаБлок»</strong> — премия семейных блогеров-миллионников, без возможности «купить» место, инвесторы, ТВ-охват</li>
+          <li><strong>МКФ «В кругу семьи»</strong> — Ярославль, 20+ лет, международный, при поддержке Ростеха и Чемизова. Красная дорожка, звёзды (Добронравов, Куценко, Ивлев и мн. др.), несколько площадок, тысячи зрителей</li>
+          <li>Топ-менеджер крупных компаний, рекламное агентство до 2020</li>
+          <li>Мама двоих детей</li>
+        </ul>
+        <div class="highlight"><strong>Для маркетинга:</strong> она в первую очередь смотрит на лагерь как мама — «кто обнимет ребёнка, если он заскучает». Это доверие, не регалии.</div>
+      </div>
+      <div class="person-card">
+        <div class="person-icon">🌍</div>
+        <div class="person-name">Иван Петров</div>
+        <div class="person-role">Руководитель лагеря · Стратегия</div>
+        <ul class="list-fancy">
+          <li>Продюсер и руководитель проектов — <strong>30+ лет опыта</strong></li>
+          <li>Бренды: Google, Citibank, Siemens, Сочи Парк, Райфайзенбанк (5 000 чел.), строительные компании и мн. др.</li>
+          <li><strong>Мероприятия 10 000+ человек</strong> единовременно — Дни города в Казани дважды</li>
+          <li>Международные проекты: Китай, Индия, ОАЭ, Бразилия, Израиль, Вьетнам, Египет</li>
+          <li><strong>«В кругу семьи»</strong> — один из первых фестивалей в Екатеринбурге</li>
+          <li>Педагог-психолог (красный диплом), МГУ. Системный анализ управления сложными проектами</li>
+          <li><strong>Йога 30+ лет</strong>, институт йоги в Индии, ретриты в Индии, День йоги в Москве 5 000+ чел.</li>
+          <li>Недавний проект: «Лучшие собаки и кошки России» в Гостином дворе, 25 000+ чел. — аналогов в Европе нет</li>
+          <li>Отец двоих дочерей. Каждое решение — через вопрос «Подошло бы это моим детям?»</li>
+        </ul>
+        <div class="highlight"><strong>Продукция компании полетела в космос</strong> — одно из корпоративных мероприятий включало договорённость с Байконуром. Это не лагерный организатор.</div>
+      </div>
+      <div class="person-card">
+        <div class="person-icon">🎵</div>
+        <div class="person-name">Александра Зигизмунд-Платова</div>
+        <div class="person-role">Хореография · Вокал · Педагог</div>
+        <ul class="list-fancy">
+          <li>Певица группы <strong>«Брат-Сестра»</strong>, действующая</li>
+          <li>Актриса, хореограф, педагог по вокалу</li>
+          <li><strong>20+ лет опыта в хореографии</strong>, столько же — вокал</li>
+          <li>Лауреат международных фестивалей и конкурсов</li>
+          <li>Постановки в профессиональных театрах и на корпоративных мероприятиях</li>
+          <li>9+ лет педагогического стажа</li>
+          <li>Мама (общий сын с Максимом)</li>
+        </ul>
+        <div class="person-icon" style="width:auto;height:auto;background:none;border:none;font-size:14px;color:var(--text2);margin-top:8px;font-style:italic;">
+          🎭 Антон Глот — речь. Закончил ИТИ им. Кобзона (мастерская нар. арт. Афанасьева). Ведущий молодой педагог кафедры речи ИТИ. Действующий актёр театра. 5 лет пед. стажа.
+        </div>
+      </div>
+    </div>
+
+    <!-- Radar chart for team trust -->
+    <div class="card">
+      <div class="card-title">📊 Профиль доверия команды (для маркетинга)</div>
+      <div class="radar-wrap" style="margin-top:16px;">
+        <svg viewBox="0 0 300 280" width="300" height="280" style="overflow:visible">
+          <defs>
+            <style>
+              .radar-poly { fill: rgba(232,201,126,0.15); stroke: #e8c97e; stroke-width: 2; }
+              .radar-axis { stroke: #2a2a3a; stroke-width: 1; }
+              .radar-ring { fill: none; stroke: #2a2a3a; stroke-width: 1; }
+              .radar-lbl { font-size: 11px; fill: #9898b0; font-family: 'IBM Plex Sans', sans-serif; }
+            </style>
+          </defs>
+          <!-- Background rings -->
+          <polygon points="150,30 240,90 210,195 90,195 60,90" class="radar-ring"/>
+          <polygon points="150,60 216,104 192,172 108,172 84,104" class="radar-ring" opacity="0.7"/>
+          <polygon points="150,90 192,118 174,150 126,150 108,118" class="radar-ring" opacity="0.5"/>
+          <!-- Axes -->
+          <line x1="150" y1="140" x2="150" y2="30" class="radar-axis"/>
+          <line x1="150" y1="140" x2="240" y2="90" class="radar-axis"/>
+          <line x1="150" y1="140" x2="210" y2="195" class="radar-axis"/>
+          <line x1="150" y1="140" x2="90" y2="195" class="radar-axis"/>
+          <line x1="150" y1="140" x2="60" y2="90" class="radar-axis"/>
+          <!-- Data: Опыт(95%), Безопасность(90%), Масштаб(90%), Доверие семьи(95%), Педагогика(85%) -->
+          <!-- Scale: max=1, ring1=0.33 at ~60px from center, ring2=0.67, ring3=1.0 -->
+          <!-- Center 150,140. Axis up: 150,30(max). Axis right: 240,90. etc. -->
+          <!-- Опыт 0.95: 150, 140-(110*0.95)=140-104.5=35.5 → 150,35 -->
+          <!-- Масштаб(правый верх) 0.9: center+(90*0.9,center-(50*0.9)) = 150+81,140-45 = 231,95 -->
+          <!-- Доверие семьи(правый низ) 0.95: center+(60*0.95,center+(55*0.95))=150+57,140+52=207,192 -->
+          <!-- Педагогика(левый низ) 0.85: center-(60*0.85,center+(55*0.85))=150-51,140+47=99,187 -->
+          <!-- Безопасность(левый верх) 0.90: center-(90*0.90,center-(50*0.90))=150-81,140-45=69,95 -->
+          <polygon points="150,35 231,95 207,192 99,187 69,95" class="radar-poly"/>
+          <!-- Labels -->
+          <text x="150" y="22" text-anchor="middle" class="radar-lbl">Опыт (30+ лет)</text>
+          <text x="248" y="88" text-anchor="start" class="radar-lbl">Масштаб</text>
+          <text x="248" y="100" text-anchor="start" class="radar-lbl">проектов</text>
+          <text x="215" y="212" text-anchor="middle" class="radar-lbl">Доверие</text>
+          <text x="215" y="224" text-anchor="middle" class="radar-lbl">семьям</text>
+          <text x="85" y="212" text-anchor="middle" class="radar-lbl">Педагогика</text>
+          <text x="85" y="224" text-anchor="middle" class="radar-lbl">с детьми</text>
+          <text x="55" y="88" text-anchor="end" class="radar-lbl">Безопасность</text>
+          <text x="55" y="100" text-anchor="end" class="radar-lbl">и забота</text>
+        </svg>
+        <div style="flex:1;min-width:200px;">
+          <div class="legend-item"><div class="legend-dot" style="background:var(--accent)"></div>Опыт (30+ лет в продюсинге)</div>
+          <div class="legend-item" style="margin-top:6px;"><div class="legend-dot" style="background:var(--blue)"></div>Масштаб (проекты 10 000+ чел.)</div>
+          <div class="legend-item" style="margin-top:6px;"><div class="legend-dot" style="background:var(--green)"></div>Доверие семьям (89 регионов, соц. проекты)</div>
+          <div class="legend-item" style="margin-top:6px;"><div class="legend-dot" style="background:var(--purple)"></div>Педагогика (Щукин, 3000+ учеников)</div>
+          <div class="legend-item" style="margin-top:6px;"><div class="legend-dot" style="background:var(--red)"></div>Безопасность и забота (мед., дети)</div>
+          <div class="highlight" style="margin-top:12px;"><strong>Маркетинговый инсайт:</strong> такой команды нет ни в одном детском лагере. Это и есть главное УТП, которое нужно вынести в первый экран.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== AUDIENCE ===== -->
+  <div class="section" id="tab-audience">
+    <div class="section-header">
+      <div class="section-eyebrow">Целевая аудитория</div>
+      <div class="section-title">Родители и их мир</div>
+    </div>
+
+    <div class="grid-2 mb-24">
+      <div class="card">
+        <div class="card-title">👩 Портрет родителя</div>
+        <ul class="list-fancy" style="margin-top:8px;">
+          <li>Мама/папа ребёнка <strong>10–16 лет</strong></li>
+          <li>Хочет «умный отдых» — не просто пляж и еда</li>
+          <li>Обеспокоена чрезмерным использованием гаджетов</li>
+          <li>Ценит безопасность и прозрачность — хочет знать, где ребёнок каждый день</li>
+          <li>Готова платить за развитие, если видит реальную ценность</li>
+          <li>Принимает решение долго — нужен прогрев и личный контакт</li>
+          <li>Возможно, сама следит за культурой, творчеством</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="card-title">💚 Что хочет получить родитель</div>
+        <div style="font-size:11px;font-weight:700;letter-spacing:1.5px;color:var(--text2);text-transform:uppercase;margin-bottom:8px;margin-top:4px;">Функциональное</div>
+        <ul class="list-fancy">
+          <li>Безопасный организованный отдых</li>
+          <li>Ребёнок провёл лето с пользой (навыки, а не «сидел у бабушки»)</li>
+          <li>Новые друзья и опыт самостоятельности</li>
+          <li>Реальные навыки, а не «просто поплавал»</li>
+        </ul>
+        <div style="font-size:11px;font-weight:700;letter-spacing:1.5px;color:var(--text2);text-transform:uppercase;margin-bottom:8px;margin-top:14px;">Эмоциональное</div>
+        <ul class="list-fancy">
+          <li>Ребёнок вернулся <strong>заряженным и счастливым</strong></li>
+          <li>«Хочу на следующую смену!» — из его уст</li>
+          <li>Я как родитель принял <strong>правильное решение</strong></li>
+          <li>Меня держали в курсе — я был спокоен все 14 дней</li>
+        </ul>
+        <div style="font-size:11px;font-weight:700;letter-spacing:1.5px;color:var(--text2);text-transform:uppercase;margin-bottom:8px;margin-top:14px;">Глубинное</div>
+        <ul class="list-fancy">
+          <li>Дать ребёнку <strong>уверенность в себе</strong> среди сверстников</li>
+          <li>Опыт, который он запомнит на всю жизнь</li>
+          <li>Возможность раскрыться в безопасной среде</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Fears -->
+    <div class="section-eyebrow" style="margin-bottom:12px;">Страхи и ответы</div>
+    <div class="fear-row">
+      <div class="fear-left"><div class="fear-icon">😰</div><div class="fear-head">Безопасность на воде</div><div class="fear-text">Утонет, уйдёт далеко, никто не проследит</div></div>
+      <div class="fear-right"><div class="fear-icon">✅</div><div class="fear-head">Факт закрытия</div><div class="fear-text">Буйки, спасатель, 2 взрослых в воде обязательно. Выход — только утром и вечером (не в жару)</div></div>
+    </div>
+    <div class="fear-row">
+      <div class="fear-left"><div class="fear-icon">🤒</div><div class="fear-head">Заболеет — кто поможет?</div><div class="fear-text">Медицинской помощи не будет, нас не предупредят</div></div>
+      <div class="fear-right"><div class="fear-icon">✅</div><div class="fear-head">Факт закрытия</div><div class="fear-text">Медкомплекс на территории. Педиатр. Медпункт на пляже. При серьёзных симптомах — немедленное уведомление родителей и сопровождение в больницу</div></div>
+    </div>
+    <div class="fear-row">
+      <div class="fear-left"><div class="fear-icon">😢</div><div class="fear-head">Не найдёт друзей, будет один</div><div class="fear-text">Он замкнутый, не умеет знакомиться</div></div>
+      <div class="fear-right"><div class="fear-icon">✅</div><div class="fear-head">Факт закрытия</div><div class="fear-text">Камерный формат до 50 чел. Адаптационные игры с первого дня. Свечки — к 4–5-му дню закрытые начинают говорить сами. Таких детей после смены не узнать</div></div>
+    </div>
+    <div class="fear-row">
+      <div class="fear-left"><div class="fear-icon">🧠</div><div class="fear-head">«Что вы делаете с психикой?»</div><div class="fear-text">Это не секта ли? Давление, манипуляции</div></div>
+      <div class="fear-right"><div class="fear-icon">✅</div><div class="fear-head">Факт закрытия</div><div class="fear-text">Никто не заставляет выступать раньше готовности. Мягкая педагогическая среда. Медиация через педагога. Всё постепенно — от меньшего к большему</div></div>
+    </div>
+    <div class="fear-row">
+      <div class="fear-left"><div class="fear-icon">📱</div><div class="fear-head">Нет связи с ребёнком</div><div class="fear-text">Не смогу узнать, как он там</div></div>
+      <div class="fear-right"><div class="fear-icon">✅</div><div class="fear-head">Факт закрытия</div><div class="fear-text">Ежедневный звонок 12:00 (30 мин). Телефон 30 мин/день. Фото/видео в общий чат ежедневно. В любой момент — через вожатого</div></div>
+    </div>
+    <div class="fear-row">
+      <div class="fear-left"><div class="fear-icon">💸</div><div class="fear-head">Дорого. Деньги пропадут</div><div class="fear-text">Не понравится, потратим зря 120 000 руб.</div></div>
+      <div class="fear-right"><div class="fear-icon">✅</div><div class="fear-head">Факт закрытия</div><div class="fear-text">Договор с чёткими условиями возврата. Рассрочка 50/50 снижает порог входа. 108 000 при полной оплате. Аналоги с морем — 85–110 тыс., но без такой программы и команды</div></div>
+    </div>
+
+    <div class="mt-24">
+      <div class="card">
+        <div class="card-title">🎯 Для кого особенно ценно</div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px;margin-top:12px;">
+          <div style="background:var(--bg4);padding:12px;border-radius:8px;font-size:13px;"><strong style="color:var(--accent);">Стесняется и боится сцены</strong><br><span style="color:var(--text2);">Постепенное включение — никто не заставляет раньше готовности</span></div>
+          <div style="background:var(--bg4);padding:12px;border-radius:8px;font-size:13px;"><strong style="color:var(--accent);">Сложно заводить друзей</strong><br><span style="color:var(--text2);">Камерный формат + знакомство через игру, без давления</span></div>
+          <div style="background:var(--bg4);padding:12px;border-radius:8px;font-size:13px;"><strong style="color:var(--accent);">Первый раз едет в лагерь</strong><br><span style="color:var(--text2);">Мягкие первые дни. Такие дети часто раскрываются сильнее всего</span></div>
+          <div style="background:var(--bg4);padding:12px;border-radius:8px;font-size:13px;"><strong style="color:var(--accent);">Замкнутый или тихий</strong><br><span style="color:var(--text2);">Свечки и командные форматы — не через давление, а через наблюдение</span></div>
+          <div style="background:var(--bg4);padding:12px;border-radius:8px;font-size:13px;"><strong style="color:var(--accent);">Уже занимается творчеством</strong><br><span style="color:var(--text2);">Получает интенсив, реальный портфолио, уровень выше</span></div>
+          <div style="background:var(--bg4);padding:12px;border-radius:8px;font-size:13px;"><strong style="color:var(--accent);">Застрял в гаджетах</strong><br><span style="color:var(--text2);">30 мин/день. Живое общение как основа всей программы</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="mt-24">
+      <div class="card">
+        <div class="card-title">💫 С чем ребёнок возвращается домой — 6 результатов</div>
+        <div class="bar-chart" style="margin-top:14px;">
+          <div class="bar-row"><div class="bar-label">Новый коллектив</div><div class="bar-track"><div class="bar-fill" style="width:95%"></div></div><div class="bar-val">Увереннее</div></div>
+          <div class="bar-row"><div class="bar-label">Инициатива</div><div class="bar-track"><div class="bar-fill" style="width:88%"></div></div><div class="bar-val">Говорит первым</div></div>
+          <div class="bar-row"><div class="bar-label">Сцена/публика</div><div class="bar-track"><div class="bar-fill" style="width:90%"></div></div><div class="bar-val">Без ступора</div></div>
+          <div class="bar-row"><div class="bar-label">Командность</div><div class="bar-track"><div class="bar-fill" style="width:92%"></div></div><div class="bar-val">Часть команды</div></div>
+          <div class="bar-row"><div class="bar-label">Реальный опыт</div><div class="bar-track"><div class="bar-fill" style="width:100%"></div></div><div class="bar-val">Финальный показ</div></div>
+          <div class="bar-row"><div class="bar-label">Самоощущение</div><div class="bar-track"><div class="bar-fill" style="width:100%"></div></div><div class="bar-val">Я справился</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== COMPETITORS ===== -->
+  <div class="section" id="tab-competitors">
+    <div class="section-header">
+      <div class="section-eyebrow">Конкуренты</div>
+      <div class="section-title">Позиционирование на рынке</div>
+    </div>
+
+    <div class="table-wrap mb-24">
+      <table>
+        <tr>
+          <th>Параметр</th>
+          <th style="background:rgba(232,201,126,0.08);">ZIGMA ART ⭐</th>
+          <th>Русская речь</th>
+          <th>LT Camp (Сочи)</th>
+          <th>LT Camp (Берег)</th>
+        </tr>
+        <tr>
+          <td><strong>Цена</strong></td>
+          <td class="comp-us td-accent">120 000 / 108 000 руб.</td>
+          <td>87–90 000 руб.</td>
+          <td>~85 000 руб.</td>
+          <td>~90 000 руб.</td>
+        </tr>
+        <tr>
+          <td><strong>Море</strong></td>
+          <td class="comp-us comp-badge-yes">✓ Шепси, свой пляж</td>
+          <td class="comp-badge-no">✗ Нет</td>
+          <td class="comp-badge-yes">✓ Park Inn, Сочи</td>
+          <td class="comp-badge-yes">✓ 22 га, Черное море</td>
+        </tr>
+        <tr>
+          <td><strong>Авторская театр. программа</strong></td>
+          <td class="comp-us comp-badge-yes">✓ Полная (актёр/речь/танец)</td>
+          <td class="comp-badge-part">~ Частично</td>
+          <td class="comp-badge-no">✗ Нет системной</td>
+          <td class="comp-badge-no">✗ Нет системной</td>
+        </tr>
+        <tr>
+          <td><strong>Питание</strong></td>
+          <td class="comp-us td-accent">5-разовое</td>
+          <td>Не указано</td>
+          <td>3-разовое (шведский стол)</td>
+          <td>Не указано</td>
+        </tr>
+        <tr>
+          <td><strong>Кол-во детей (смена)</strong></td>
+          <td class="comp-us td-accent">До 50 (камерный)</td>
+          <td>Не указано</td>
+          <td>Крупный</td>
+          <td>Крупный</td>
+        </tr>
+        <tr>
+          <td><strong>Итоговых форматов</strong></td>
+          <td class="comp-us td-accent">7–9 форматов</td>
+          <td>Показ в театре</td>
+          <td>Флешмоб</td>
+          <td>Не указано</td>
+        </tr>
+        <tr>
+          <td><strong>Уровень команды</strong></td>
+          <td class="comp-us td-accent">Федеральный (89 рег., 25 000+ чел.)</td>
+          <td>Педагоги студии</td>
+          <td>«Звёзды» (известные)</td>
+          <td>Педагоги</td>
+        </tr>
+        <tr>
+          <td><strong>Методология</strong></td>
+          <td class="comp-us td-accent">Система Щукинского института</td>
+          <td>Своя</td>
+          <td>Не указана</td>
+          <td>Не указана</td>
+        </tr>
+        <tr>
+          <td><strong>Конкурсная прогр. отдельно</strong></td>
+          <td class="comp-us comp-badge-no">✗ Всё включено</td>
+          <td>Не указано</td>
+          <td class="comp-badge-yes">✓ Доп. оплата</td>
+          <td>Не указано</td>
+        </tr>
+        <tr>
+          <td><strong>Медкомплекс</strong></td>
+          <td class="comp-us comp-badge-yes">✓ Целый этаж</td>
+          <td>Не указано</td>
+          <td>Стандартный</td>
+          <td>Стандартный</td>
+        </tr>
+        <tr>
+          <td><strong>Позиционирование</strong></td>
+          <td class="comp-us" style="color:var(--accent);font-style:italic;font-size:12px;">«Полгода студии за 14 дней у моря»</td>
+          <td style="font-size:12px;font-style:italic;">«Театр, не для актёров»</td>
+          <td style="font-size:12px;font-style:italic;">Творч. лагерь со звёздами</td>
+          <td style="font-size:12px;font-style:italic;">Природа + творчество</td>
+        </tr>
+      </table>
+    </div>
+
+    <div class="card card-accent">
+      <div class="card-title">🎯 Главное УТП в одной фразе</div>
+      <div style="font-family:'Playfair Display',serif;font-size:18px;font-weight:700;color:var(--text);margin-top:8px;line-height:1.4;">
+        Единственный лагерь, где <span style="color:var(--accent);">море + системная авторская театральная программа по Щукинской школе</span> + команда, которая организовывала проекты на 89 регионов и 25 000 человек — всё в одной смене за 14 дней.
+      </div>
+      <div class="divider"></div>
+      <div class="grid-3">
+        <div>
+          <div style="font-size:11px;color:var(--text2);font-weight:600;letter-spacing:1px;text-transform:uppercase;margin-bottom:6px;">Против «Русской речи»</div>
+          <div style="font-size:13px;color:var(--text);">У нас море. Они берут сцену театра — мы даём её и плюс пляж</div>
+        </div>
+        <div>
+          <div style="font-size:11px;color:var(--text2);font-weight:600;letter-spacing:1px;text-transform:uppercase;margin-bottom:6px;">Против LT Camp</div>
+          <div style="font-size:13px;color:var(--text);">У нас авторская системная программа на 14 дней. У них — мастер-классы без структуры</div>
+        </div>
+        <div>
+          <div style="font-size:11px;color:var(--text2);font-weight:600;letter-spacing:1px;text-transform:uppercase;margin-bottom:6px;">Против всех</div>
+          <div style="font-size:13px;color:var(--text);">Это не сезонный проект — это выездной формат действующей студии с теми же педагогами</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== SALES ===== -->
+  <div class="section" id="tab-sales">
+    <div class="section-header">
+      <div class="section-eyebrow">Продажи</div>
+      <div class="section-title">Текущая ситуация и механики</div>
+    </div>
+
+    <div class="stats-row mb-24">
+      <div class="stat-block"><span class="num" style="color:var(--green);">~10</span><span class="lbl">Продано путёвок</span></div>
+      <div class="stat-block"><span class="num" style="color:var(--red);">90</span><span class="lbl">Осталось продать</span></div>
+      <div class="stat-block"><span class="num">10%</span><span class="lbl">Скидка за 100% оплату</span></div>
+      <div class="stat-block"><span class="num">≈15 апр</span><span class="lbl">Дедлайн скидки</span></div>
+    </div>
+
+    <div class="grid-2 mb-24">
+      <div class="card">
+        <div class="card-title">🎯 Сегменты аудитории (приоритет)</div>
+        <div class="bar-chart" style="margin-top:12px;">
+          <div class="bar-row"><div class="bar-label" style="font-size:12px;">Действующие ученики</div><div class="bar-track"><div class="bar-fill bar-fill-green" style="width:100%"></div></div><div class="bar-val td-green">★★★</div></div>
+          <div class="bar-row"><div class="bar-label" style="font-size:12px;">Бывшие ученики</div><div class="bar-track"><div class="bar-fill bar-fill-green" style="width:80%"></div></div><div class="bar-val td-green">★★★</div></div>
+          <div class="bar-row"><div class="bar-label" style="font-size:12px;">Интересовались ранее</div><div class="bar-track"><div class="bar-fill" style="width:70%"></div></div><div class="bar-val">★★☆</div></div>
+          <div class="bar-row"><div class="bar-label" style="font-size:12px;">Реферальная база</div><div class="bar-track"><div class="bar-fill" style="width:65%"></div></div><div class="bar-val">★★☆</div></div>
+          <div class="bar-row"><div class="bar-label" style="font-size:12px;">Холодный трафик</div><div class="bar-track"><div class="bar-fill bar-fill-red" style="width:30%"></div></div><div class="bar-val td-red">★☆☆</div></div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-title">💰 Реферальная механика</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px;">
+          <div style="background:var(--bg4);border-radius:8px;padding:14px;text-align:center;">
+            <div style="font-size:32px;font-weight:900;font-family:'Playfair Display',serif;color:var(--accent);">10%</div>
+            <div style="font-size:12px;color:var(--text2);margin-top:4px;">Тому, кто привёл нового клиента</div>
+          </div>
+          <div style="background:var(--bg4);border-radius:8px;padding:14px;text-align:center;">
+            <div style="font-size:32px;font-weight:900;font-family:'Playfair Display',serif;color:var(--accent);">10%</div>
+            <div style="font-size:12px;color:var(--text2);margin-top:4px;">Пришедшему по рекомендации</div>
+          </div>
+        </div>
+        <div class="highlight"><strong>Итого:</strong> 10% от 120 000 = 12 000 руб. на руки рекомендателю и 12 000 скидки новому клиенту. Сильная механика для тёплой базы.</div>
+      </div>
+    </div>
+
+    <!-- Sales Funnel -->
+    <div class="mb-24">
+      <div style="font-family:'Playfair Display',serif;font-size:20px;font-weight:700;color:var(--text);margin-bottom:16px;">🔽 Воронка продаж</div>
+      <div class="funnel">
+        <div class="funnel-step">
+          <div class="funnel-n">1</div>
+          <div class="funnel-text"><div class="funnel-title">Холодный трафик / тёплая база</div><div class="funnel-desc">Telegram-канал, ВКонтакте, рекомендации, РСЯ — точка первого касания</div></div>
+        </div>
+        <div class="funnel-arrow">↓</div>
+        <div class="funnel-step">
+          <div class="funnel-n">2</div>
+          <div class="funnel-text"><div class="funnel-title">Прогрев в Telegram</div><div class="funnel-desc">Контент о команде, программе, результатах студии. Видео занятий. Отзывы родителей</div></div>
+        </div>
+        <div class="funnel-arrow">↓</div>
+        <div class="funnel-step">
+          <div class="funnel-n">3</div>
+          <div class="funnel-text"><div class="funnel-title">Сайт — детали и доверие</div><div class="funnel-desc">Не первая точка входа, а подтверждение. Подробный FAQ, программа, педагоги</div></div>
+        </div>
+        <div class="funnel-arrow">↓</div>
+        <div class="funnel-step">
+          <div class="funnel-n">4</div>
+          <div class="funnel-text"><div class="funnel-title">Личный контакт (ключевой этап)</div><div class="funnel-desc">Видео-звонок или встреча в студии. Максим рассказывает лично. Можно познакомить с Иваном, Любой. 120 000 без личного контакта не продаются</div></div>
+        </div>
+        <div class="funnel-arrow">↓</div>
+        <div class="funnel-step">
+          <div class="funnel-n">5</div>
+          <div class="funnel-text"><div class="funnel-title">Договор + 50% предоплата</div><div class="funnel-desc">Очно (с печатями) или дистанционно. Подпись на каждой странице. Место забронировано.</div></div>
+        </div>
+        <div class="funnel-arrow">↓</div>
+        <div class="funnel-step">
+          <div class="funnel-n">6</div>
+          <div class="funnel-text"><div class="funnel-title">Добавление в чат + нагрев до смены</div><div class="funnel-desc">Регулярные напоминания, знакомство с подрядчиком трансфера, чек-листы, контент подготовки</div></div>
+        </div>
+        <div class="funnel-arrow">↓</div>
+        <div class="funnel-step" style="border-color:rgba(232,201,126,0.4);">
+          <div class="funnel-n" style="background:var(--accent-dim);border-color:var(--accent);">✓</div>
+          <div class="funnel-text"><div class="funnel-title" style="color:var(--accent);">Смена + финальный отчёт</div><div class="funnel-desc">Ежедневные фото/видео, связь с родителями. Финальный праздник. Рекомендация от счастливого родителя.</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid-2">
+      <div class="card">
+        <div class="card-title">📅 Сроки для команды</div>
+        <div class="timeline" style="margin-top:12px;">
+          <div class="timeline-item"><div class="timeline-day">Сейчас — март 2025</div><div class="timeline-title">Запуск</div><div class="timeline-desc">Сайт (готов через 1–2 дня от 04.03), контент, прогрев тёплой базы</div></div>
+          <div class="timeline-item"><div class="timeline-day">До ~15 апреля</div><div class="timeline-title">Скидка 10%</div><div class="timeline-desc">Активные продажи с акцентом на 100% оплату = 108 000 руб.</div></div>
+          <div class="timeline-item"><div class="timeline-day">Апрель — май</div><div class="timeline-title">Добивка до 100 мест</div><div class="timeline-desc">Основная масса продаж. В мае — последние места</div></div>
+          <div class="timeline-item"><div class="timeline-day">За 2 нед. до смены</div><div class="timeline-title">Финальная коммуникация</div><div class="timeline-desc">Чек-листы, знакомство с перевозчиком, чат активируется</div></div>
+          <div class="timeline-item"><div class="timeline-day">За 2 дня до смены</div><div class="timeline-title">Команда выезжает</div><div class="timeline-desc">Педагоги и организаторы приезжают на площадку</div></div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-title">📦 Что уже есть для маркетинга</div>
+        <div style="font-size:11px;font-weight:700;letter-spacing:1.5px;color:var(--green);text-transform:uppercase;margin-bottom:8px;margin-top:6px;">Есть ✓</div>
+        <ul class="list-fancy">
+          <li>Telegram-канал студии</li>
+          <li>Сайт zigma-art.ru (готовится)</li>
+          <li>Страницы педагогов: /glot и /zipla</li>
+          <li>Видео занятий в студии Москвы</li>
+          <li>Отзывы родителей действующей студии</li>
+          <li>Биографии всей команды (подробные)</li>
+          <li>Подрядчик трансфера с 8-летним опытом</li>
+          <li>~10 первых клиентов (для КАСТДЕВ)</li>
+        </ul>
+        <div style="font-size:11px;font-weight:700;letter-spacing:1.5px;color:var(--red);text-transform:uppercase;margin-bottom:8px;margin-top:14px;">Нужно снять ✗</div>
+        <ul class="list-fancy">
+          <li>Дикционный номер подростков в студии</li>
+          <li>Темпоритмическую речевую композицию</li>
+          <li>Этюды (групповые и парные)</li>
+          <li>Командный танец / координационный номер</li>
+          <li>Фрагменты свечки в кругу</li>
+          <li>Видео с пансионатом Шепси и пляжем</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== MARKETING ===== -->
+  <div class="section" id="tab-marketing">
+    <div class="section-header">
+      <div class="section-eyebrow">Маркетинг</div>
+      <div class="section-title">Каналы, контент, задачи команды</div>
+    </div>
+
+    <div class="grid-2 mb-24">
+      <div class="card">
+        <div class="card-title">📡 Каналы (приоритеты)</div>
+        <div class="bar-chart" style="margin-top:12px;">
+          <div class="bar-row"><div class="bar-label">Telegram-канал</div><div class="bar-track"><div class="bar-fill" style="width:100%"></div></div><div class="bar-val">Основной</div></div>
+          <div class="bar-row"><div class="bar-label">Тёплая база</div><div class="bar-track"><div class="bar-fill bar-fill-green" style="width:90%"></div></div><div class="bar-val">Приоритет 1</div></div>
+          <div class="bar-row"><div class="bar-label">Рефералы (10%)</div><div class="bar-track"><div class="bar-fill bar-fill-green" style="width:80%"></div></div><div class="bar-val">Встроено</div></div>
+          <div class="bar-row"><div class="bar-label">Сайт (доверие)</div><div class="bar-track"><div class="bar-fill bar-fill-blue" style="width:60%"></div></div><div class="bar-val">Поддержка</div></div>
+          <div class="bar-row"><div class="bar-label">РСЯ / Яндекс</div><div class="bar-track"><div class="bar-fill bar-fill-blue" style="width:45%"></div></div><div class="bar-val">Тест</div></div>
+          <div class="bar-row"><div class="bar-label">Закупы TG-каналов</div><div class="bar-track"><div class="bar-fill bar-fill-blue" style="width:40%"></div></div><div class="bar-val">Тест</div></div>
+        </div>
+        <div class="highlight"><strong>Важно:</strong> сайт — не первая точка входа. Сначала Telegram-прогрев, потом сайт закрывает доверие.</div>
+      </div>
+      <div class="card">
+        <div class="card-title">📝 Контент-план (темы)</div>
+        <ul class="list-fancy" style="margin-top:8px;">
+          <li><strong>Команда:</strong> истории Ивана, Любы, Максима — не регалии, а «почему они в это верят»</li>
+          <li><strong>Программа:</strong> видео занятий в студии, разбор «что это даёт ребёнку»</li>
+          <li><strong>Результаты студии:</strong> реальные отзывы родителей, изменения в детях</li>
+          <li><strong>FAQ:</strong> разбор страхов родителей через посты и видео</li>
+          <li><strong>Локация:</strong> видео с Шепси, пансионат, пляж, инфраструктура</li>
+          <li><strong>Сравнение:</strong> «почему не обычный лагерь» — конкретные цифры и аргументы</li>
+          <li><strong>Дедлайн:</strong> контент с ограничением мест (50 на смену) и скидкой до апреля</li>
+          <li><strong>Дети из студии:</strong> истории текущих учеников (с согласия родителей)</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="grid-2 mb-24">
+      <div class="card">
+        <div class="card-title">🎬 Контент к съёмке — список для студии</div>
+        <div class="table-wrap">
+          <table>
+            <tr><th>Формат</th><th>Приоритет</th><th>Зачем</th></tr>
+            <tr><td>Дикционный номер подростков</td><td class="td-green">Высокий</td><td>Показать уровень речи</td></tr>
+            <tr><td>Темпоритмическая композиция</td><td class="td-green">Высокий</td><td>WOW-формат, виральность</td></tr>
+            <tr><td>Групповые/парные этюды</td><td class="td-green">Высокий</td><td>Показать живое обучение</td></tr>
+            <tr><td>Координационный номер (танец)</td><td class="td-accent">Средний</td><td>Командность + визуал</td></tr>
+            <tr><td>«Свечка» в кругу (фрагмент)</td><td class="td-accent">Средний</td><td>Доверие, атмосфера заботы</td></tr>
+            <tr><td>Видео педагогов о программе</td><td class="td-green">Высокий</td><td>Личный контакт заранее</td></tr>
+            <tr><td>Видео Максима «Почему лагерь»</td><td class="td-green">Высокий</td><td>Первая точка доверия</td></tr>
+            <tr><td>Пансионат Шепси и пляж</td><td class="td-accent">Средний</td><td>Закрыть вопрос «а где?»</td></tr>
+          </table>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-title">✅ Задачи маркетинговой команды</div>
+        <ul class="list-fancy" style="margin-top:8px;">
+          <li><strong>КАСТДЕВ с 10 первыми клиентами</strong> — список вопросов от Максима. Понять реальные мотивы покупки</li>
+          <li><strong>Анализ конкурентов</strong> — детально по тем, кто есть, через инструмент Максима</li>
+          <li><strong>Стратегия воронки</strong> — какой канал → какой контент → какой шаг. Бюджет и прогноз по каналам</li>
+          <li><strong>Съёмочный список</strong> — передать в студию с конкретным ТЗ</li>
+          <li><strong>Контент Telegram</strong> — минимум 3–5 постов в неделю до конца апреля</li>
+          <li><strong>Сайт-аудит</strong> — что там есть, что доработать для конверсии</li>
+          <li><strong>Реферальная механика</strong> — как технически реализовать и донести до базы</li>
+          <li><strong>Работа с возражением «дорого»</strong> — акцент на рассрочку и скидку в коммуникации</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Pie chart: price justification -->
+    <div class="card mb-24">
+      <div class="card-title">🥧 Из чего складывается стоимость (визуализация ценности)</div>
+      <div class="pie-wrap" style="margin-top:16px;">
+        <svg viewBox="0 0 200 200" width="200" height="200">
+          <!-- Pie: Проживание+питание 40%, Программа 30%, Команда 20%, Оргсбор+безопасность 10% -->
+          <!-- Total degrees: 360 -->
+          <!-- Slice 1: 40% = 144deg. Start 0, end 144. -->
+          <!-- SVG arc: rx=80, center 100,100 -->
+          <!-- Slice 1: gold #e8c97e, 0 to 144 -->
+          <path d="M100,100 L100,20 A80,80 0 0,1 195.1,77.6 Z" fill="#e8c97e"/>
+          <!-- Slice 2: blue, 144 to 252 (108deg = 30%) -->
+          <path d="M100,100 L195.1,77.6 A80,80 0 0,1 36.1,175 Z" fill="#7eaee8"/>
+          <!-- Slice 3: green, 252 to 324 (72deg = 20%) -->
+          <path d="M100,100 L36.1,175 A80,80 0 0,1 55.1,30.3 Z" fill="#7ec9a0"/>
+          <!-- Slice 4: purple, 324 to 360 (36deg = 10%) -->
+          <path d="M100,100 L55.1,30.3 A80,80 0 0,1 100,20 Z" fill="#b07ee8"/>
+          <circle cx="100" cy="100" r="40" fill="#0a0a0f"/>
+          <text x="100" y="96" text-anchor="middle" fill="#e8c97e" font-family="'Playfair Display',serif" font-size="16" font-weight="900">120k</text>
+          <text x="100" y="112" text-anchor="middle" fill="#6060a0" font-family="'IBM Plex Sans',sans-serif" font-size="9">руб.</text>
+        </svg>
+        <div class="pie-legend">
+          <div class="legend-item"><div class="legend-dot" style="background:#e8c97e"></div><strong>40%</strong> — Проживание + 5-разовое питание 14 дней</div>
+          <div class="legend-item"><div class="legend-dot" style="background:#7eaee8"></div><strong>30%</strong> — Авторская программа (актёр/речь/танец)</div>
+          <div class="legend-item"><div class="legend-dot" style="background:#7ec9a0"></div><strong>20%</strong> — Команда федерального уровня 24/7</div>
+          <div class="legend-item"><div class="legend-dot" style="background:#b07ee8"></div><strong>10%</strong> — Безопасность, медицина, организация</div>
+          <div class="highlight" style="margin-top:12px;max-width:300px;"><strong>Маркетинговый инсайт:</strong> цена 120 000 руб. — это не «лагерь», это 14 дней полного погружения с командой, которая организовывала федеральные проекты. Сравнивать надо не с соседним лагерем, а с полугодием в студии + летним отдыхом на курорте.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">💬 Смыслы для рекламных текстов</div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:12px;margin-top:12px;">
+        <div style="background:var(--bg4);border-radius:8px;padding:14px;border-left:2px solid var(--accent);">
+          <div style="font-size:11px;color:var(--accent);font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:6px;">Главный крючок</div>
+          <div style="font-size:14px;color:var(--text);font-style:italic;font-family:'Playfair Display',serif;">"14 дней у моря — и ребёнок, который боялся выступать, выходит на сцену сам"</div>
+        </div>
+        <div style="background:var(--bg4);border-radius:8px;padding:14px;border-left:2px solid var(--blue);">
+          <div style="font-size:11px;color:var(--blue);font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:6px;">Доверие через команду</div>
+          <div style="font-size:14px;color:var(--text);font-style:italic;font-family:'Playfair Display',serif;">"Организаторы 89 регионов и 25 000 человек — теперь делают лагерь для 50 детей. С той же отдачей."</div>
+        </div>
+        <div style="background:var(--bg4);border-radius:8px;padding:14px;border-left:2px solid var(--green);">
+          <div style="font-size:11px;color:var(--green);font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:6px;">Против гаджетов</div>
+          <div style="font-size:14px;color:var(--text);font-style:italic;font-family:'Playfair Display',serif;">"Телефон — 30 минут в день. Всё остальное время — живые люди, море, сцена."</div>
+        </div>
+        <div style="background:var(--bg4);border-radius:8px;padding:14px;border-left:2px solid var(--purple);">
+          <div style="font-size:11px;color:var(--purple);font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:6px;">Результат для родителя</div>
+          <div style="font-size:14px;color:var(--text);font-style:italic;font-family:'Playfair Display',serif;">"Ребёнок вернулся и сам попросил на следующую смену. Вот что считается результатом."</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /content -->
+
+<script>
+  // Tab switching - desktop (click) + mobile (touchend)
+  let touchStarted = false;
+
+  function handleTab(e, tabId) {
+    if (e.type === 'touchend') {
+      e.preventDefault();
+      if (!touchStarted) return;
+      touchStarted = false;
+    }
+    switchTab(tabId);
+  }
+
+  document.querySelectorAll('.tab').forEach(btn => {
+    btn.addEventListener('touchstart', () => { touchStarted = true; }, { passive: true });
+    btn.addEventListener('click', function(e) {
+      if (!e.isTrusted) return;
+      const tabId = this.getAttribute('data-tab');
+      switchTab(tabId);
+    });
+  });
+
+  function switchTab(tabId) {
+    document.querySelectorAll('.tab').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+    const btn = document.querySelector(`.tab[data-tab="${tabId}"]`);
+    const sec = document.getElementById('tab-' + tabId);
+    if (btn) btn.classList.add('active');
+    if (sec) {
+      sec.classList.add('active');
+      // animate bars
+      setTimeout(() => animateBars(sec), 50);
+    }
+  }
+
+  // Animate bars on tab open
+  function animateBars(container) {
+    container.querySelectorAll('.bar-fill').forEach(bar => {
+      const w = bar.style.width;
+      bar.style.width = '0';
+      setTimeout(() => { bar.style.width = w; }, 10);
+    });
+  }
+
+  // Toggle program modules
+  function toggleProgram(header) {
+    const body = header.nextElementSibling;
+    const toggle = header.querySelector('.program-toggle');
+    const isOpen = body.classList.contains('open');
+    body.classList.toggle('open', !isOpen);
+    toggle.style.transform = isOpen ? '' : 'rotate(180deg)';
+  }
+
+  // Init
+  animateBars(document.getElementById('tab-overview'));
+</script>
+</body>
+</html>
